@@ -1,0 +1,34 @@
+//FONTS
+@font-face {
+  font-family: "barlow-light";
+  src: url("/assets/BarlowCondensed-Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "barlow-regular";
+  src: url("/assets/BarlowCondensed-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "barlow-semiBold";
+  src: url("/assets/BarlowCondensed-SemiBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+$light: "barlow-light";
+$regular: "barlow-regular";
+$semiBold: "barlow-semiBold";
+
+//COLORS
+$background-light: #fcf7f0;
+$section-background: #f1e5d3;
+$yellow: #fcce72;
+$light-green: #849478;
+$red: #d1785a;
+$brown: #3c100a;
+$dark-green: #2f4b23;
+$red-taps: #e26133;
+$dark-grey: #535050;
+$light-grey: #8b8b8b;
