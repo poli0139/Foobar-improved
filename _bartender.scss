@@ -1,5 +1,4 @@
 @use "variables";
-@use "dashboard";
 
 .bartender {
   background-color: transparent;
@@ -12,7 +11,8 @@
   padding: 1vw;
 }
 .bartender img {
-  width: 95%;
+  width: 7rem;
+  //   height: 100%;
   padding: 0.8vw;
 }
 .logout {
@@ -20,7 +20,7 @@
   justify-self: end;
   align-self: end;
   margin: 1vw;
-  font-size: 1vw;
+  font-size: 1rem;
   font-family: variables.$semiBold;
 }
 .bartenderinfo {
@@ -34,11 +34,11 @@
     font-family: variables.$regular;
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 2.2vw;
+    font-size: 2.2rem;
   }
   p {
     font-family: variables.$light;
-    font-size: 1.3vw;
+    font-size: 1.3rem;
     padding: 0;
     margin: 0;
   }

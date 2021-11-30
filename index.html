@@ -19,15 +19,92 @@
           <p>Your shift</p>
           <p>17:00-01:00</p>
         </div>
-        <button class="logout">LOG OUT</button>
+        <button class="button logout">LOG OUT</button>
       </section>
       <section class="overview">
-        <div class="taps"></div>
-        <div class="storage"></div>
+        <h1 class="section-heading">Overview</h1>
+        <div class="taps">
+          <h2 class="subheading">TAPS</h2>
+        </div>
+        <div class="storage">
+          <h2 class="subheading">STORAGE</h2>
+          <div class="storageitems">
+            <ul>
+              <li><span class="namebeer">El Hefe</span><span class="amountbeer">x4</span></li>
+              <li><span class="namebeer">Fairy Tale Ale</span><span class="amountbeer">x5</span></li>
+              <li><span class="namebeer">Git Hop</span><span class="amountbeer">x3</span></li>
+              <li><span class="namebeer">Hollaback Lager</span><span class="amountbeer">x1</span></li>
+              <li><span class="namebeer">Hoppily Ever After</span><span class="amountbeer">x2</span></li>
+              <li><span class="namebeer">Mowintime</span><span class="amountbeer">x5</span></li>
+              <li><span class="namebeer">Row 26</span><span class="amountbeer">x3</span></li>
+              <li><span class="namebeer">Ruined Childhood</span><span class="amountbeer">x6</span></li>
+              <li><span class="namebeer">Sleighride</span><span class="amountbeer">x3</span></li>
+              <li><span class="namebeer">Steampunk</span><span class="amountbeer">x2</span></li>
+            </ul>
+          </div>
+        </div>
       </section>
       <section class="yourTask">
-        <div class="order"></div>
-        <div class="nextInQueue"></div>
+        <h1 class="section-heading">Your task</h1>
+        <div class="order">
+          <div class="orderList">
+            <h2 class="subheading">Order <span class="orderId">#112</span></h2>
+            <ul>
+              <li class="singleOrder">
+                <span class="amount">1</span> x
+                <span class="name">Ruined Childhood</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">2</span> x
+                <span class="name">Row 26</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">5</span> x
+                <span class="name">Steampunk</span>
+              </li>
+            </ul>
+          </div>
+          <div class="time-button">
+            <p class="order-time">19:25</p>
+            <button class="done-btn">Done</button>
+          </div>
+        </div>
+
+        <div class="nextInQueue">
+          <h1 class="section-heading">next in queue</h1>
+          <div class="people-queue">
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <script type="module" src="/main.js"></script>

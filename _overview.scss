@@ -1,0 +1,51 @@
+@use "variables";
+.overview {
+  h2 {
+    // padding-top: 2vw;
+    padding-left: 2vw;
+    margin-bottom: 2vw;
+    margin-top: 0;
+  }
+  border-radius: 10px;
+  .taps {
+    background-color: variables.$section-background;
+    border-radius: 10px;
+    box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
+  }
+  .storage {
+    background-color: variables.$section-background;
+    border-radius: 10px;
+    padding: 2vw;
+    box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
+  }
+  ul {
+    list-style: none;
+    padding-left: 5vw;
+    padding-right: 2vw;
+    margin: 0;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-family: variables.$regular;
+    font-size: 1.8rem;
+    padding: 0.2rem;
+    color: variables.$dark-grey;
+    border-bottom: solid 1px variables.$dark-grey;
+  }
+  .storageitems {
+    height: 6vw;
+    overflow: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: variables.$dark-green variables.$background-light;
+    margin-right: 1vw;
+  }
+  .storageitems::-webkit-scrollbar {
+    width: 7px;
+    background: variables.$background-light;
+  }
+  .storageitems::-webkit-scrollbar-thumb {
+    background: variables.$dark-green;
+  }
+}

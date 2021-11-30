@@ -1,10 +1,14 @@
 @use "variables";
+@use "yourTask";
+@use "bartender";
+@use "overview";
 * {
   box-sizing: border-box;
 }
 body {
   padding: 0;
   margin: 0;
+  background-color: variables.$background-light;
 }
 
 header {
@@ -17,25 +21,33 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.5fr 1.5fr;
-  column-gap: 5vw;
-  height: 100vh;
+  column-gap: 3vw;
+  row-gap: 3vw;
+  //   height: 100vh;
+  margin: 0 2rem;
 }
 .bartender {
-  background-color: pink;
   grid-column-start: 1;
   grid-column-end: 3;
 }
 .overview {
-  background-color: yellow;
   grid-column-start: 1;
   grid-column-end: 4;
-  //   height: 0vh;
 }
 .yourTask {
-  background-color: blue;
   grid-column-start: 4;
   grid-column-end: -1;
   grid-row-start: 1;
   grid-row-end: 3;
-  //   height: 100vh;
+}
+
+.section-heading {
+  font-family: variables.$semiBold;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.subheading {
+  font-family: variables.$semiBold;
+  text-transform: uppercase;
+  font-size: 1.5rem;
 }
