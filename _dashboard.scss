@@ -1,5 +1,7 @@
 @use "variables";
 @use "yourTask";
+@use "bartender";
+@use "overview";
 * {
   box-sizing: border-box;
 }
@@ -24,12 +26,10 @@ main {
   margin: 0 2rem;
 }
 .bartender {
-  background-color: pink;
   grid-column-start: 1;
   grid-column-end: 3;
 }
 .overview {
-  background-color: yellow;
   grid-column-start: 1;
   grid-column-end: 4;
 }
