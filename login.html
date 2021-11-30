@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.scss" />
     <title>FooBar - Log-in</title>
-</head>
-<header>
+  </head>
+  <!--Navigation-->
+  <header>
     <div class="nav">
-        <div class="logo">
-            <img src="/img/FooBar - logo.svg" alt="logo">
-        </div>
-        <div class="switch">
-            <img src="img/FooBar - swirch.svg" alt="switch">
-        </div>
-            </div>
-</header>
-<body>
-    
-</body>
+      <div class="switch">
+        <img src="/assets/FooBar - switch.png" alt="switch" />
+      </div>
+    </div>
+  </header>
+  <!--end of navigation-->
+  <!--form-->
+  <body>
+    <div class="logo">
+      <img src="/assets/logo-green.png" alt="logo" />
+    </div>
+
+    <div class="form-wrapper">
+      <form class="login-form">
+        <label>Username</label>
+        <input type="text" class="login-form-input" placeholder="John" id="Username" autocomplete="off" name="username" />
+        <p class="message">Error Message</p>
+        <label>Password</label>
+        <input type="password" class="login-form-input" placeholder="********" id="Password" autocomplete="off" name="password"/>
+        <p class="message">Error Message</p>
+        <input type="submit" class="form-submit-btn" value="LOG IN" />
+      </form>
+    </div>
+
+    <!--end of form-->
+    <script type="module" src="/main.js"></script>
+  </body>
 </html>
