@@ -25,6 +25,8 @@
     height: 5.5rem;
     row-gap: 0.3rem;
     overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: variables.$dark-green variables.$section-background;
   }
   ul::-webkit-scrollbar {
     width: 7px;
