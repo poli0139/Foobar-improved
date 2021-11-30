@@ -23,7 +23,6 @@ main {
   grid-template-rows: 0.5fr 1.5fr;
   column-gap: 3vw;
   row-gap: 3vw;
-  //   height: 100vh;
   margin: 0 2rem;
 }
 .bartender {
@@ -45,9 +44,41 @@ main {
   font-family: variables.$semiBold;
   text-transform: uppercase;
   font-size: 2rem;
+  margin: 0.5rem auto;
+  color: variables.$dark-green;
 }
 .subheading {
   font-family: variables.$semiBold;
   text-transform: uppercase;
   font-size: 1.5rem;
+  margin-top: 0;
+  color: variables.$dark-green;
+}
+.button {
+  color: variables.$dark-green;
+  font-family: variables.$semiBold;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-top: solid variables.$dark-green 2px;
+}
+
+@media only screen and (max-width: 900px) {
+  main {
+    grid-template-rows: 0.5fr 1.5fr 1fr;
+  }
+  .yourTask {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    padding: 2rem;
+  }
+  .overview {
+    grid-row-start: 3;
+    grid-column-end: 6;
+  }
+  .bartender {
+    grid-column-start: 2;
+    grid-column-end: 5;
+  }
 }
