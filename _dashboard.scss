@@ -1,1 +1,41 @@
 @use "variables";
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  font-family: variables.$regular;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  column-gap: 5vw;
+  height: 100vh;
+}
+.bartender {
+  background-color: pink;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.overview {
+  background-color: yellow;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  //   height: 0vh;
+}
+.yourTask {
+  background-color: blue;
+  grid-column-start: 4;
+  grid-column-end: -1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  //   height: 100vh;
+}
