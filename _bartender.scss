@@ -1,0 +1,45 @@
+@use "variables";
+@use "dashboard";
+
+.bartender {
+  background-color: transparent;
+  border-radius: 10px;
+  border: solid 3px variables.$light-green;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 1vw;
+}
+.bartender img {
+  width: 95%;
+  padding: 0.8vw;
+}
+.logout {
+  grid-column-start: 4;
+  justify-self: end;
+  align-self: end;
+  margin: 1vw;
+  font-size: 1vw;
+  font-family: variables.$semiBold;
+}
+.bartenderinfo {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 0.5vw;
+  color: variables.$dark-grey;
+
+  h1 {
+    font-family: variables.$regular;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.2vw;
+  }
+  p {
+    font-family: variables.$light;
+    font-size: 1.3vw;
+    padding: 0;
+    margin: 0;
+  }
+}
