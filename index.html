@@ -7,27 +7,44 @@
     <link rel="stylesheet" href="/style.scss" />
     <title>FooBar</title>
   </head>
-  <body>
-    <!--loading animation-->
-   
-<div class="loader">
- <div class="welcome">
+  <header></header>
 
-  <div class="logo2">
-    <img src="/assets/logo-green.png" alt="logo" />
+  <!--loading animation-->
+
+  <div class="loader">
+    <div class="welcome">
+      <div class="logo2">
+        <img src="/assets/logo-green.png" alt="logo" />
+      </div>
+      <p class="hi">Hi, <span class="name"></span></p>
+      <br />
+      <p class="shift">Have a nice shift!</p>
+    </div>
   </div>
-   <p class="hi">Hi,  <span class="name"></span></p>
-   <br>
-   <p class="shift">Have a nice shift!</p>
- </div>
 
-</div>
+  <!--end of loading animation-->
+  <body>
+    <div class="screen1">
+      <div class="logo">
+        <img src="/assets/logo-green.png" alt="logo" />
+      </div>
 
+      <div class="form-wrapper">
+        <form class="login-form" id="myform" method="POST" name="login">
+          <label>Username</label>
+          <span class="comment"> Valid Usernames: Jonas, Klaus, Peter, Dannie </span>
+          <input type="text" class="login-form-input" placeholder="Jonas" id="Username" autocomplete="off" name="username" />
+          <p class="message">Error Message</p>
+          <label>Password</label>
+          <span class="comment"> Valid Password: 12345678 </span>
+          <input type="password" class="login-form-input" placeholder="********" id="Password" autocomplete="off" name="password" />
+          <p class="message">Error Message</p>
+          <input type="submit" class="form-submit-btn" value="LOG IN" />
+        </form>
+      </div>
+    </div>
 
-
-<!--end of loading animation-->
-    <header></header>
-    <main>
+    <main class="main">
       <section class="bartender"></section>
       <section class="overview">
         <div class="taps"></div>
