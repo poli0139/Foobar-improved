@@ -35,7 +35,18 @@ body {
   width: auto;
 }
 
-//Contact form
+.comment {
+  font-family: variables.$regular;
+  color: variables.$dark-grey;
+  opacity: 60%;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  // display: block;
+  width: 17vw;
+  text-align: left;
+}
+
+//Login form
 .form-wrapper {
   display: flex;
   justify-content: center;
@@ -84,7 +95,6 @@ label {
 
 // form valiadation
 
-
 .message {
   font-size: 1.2rem;
   font-weight: 700;
@@ -104,30 +114,37 @@ label {
 // end of form validation
 
 //responsiveness
-@media only screen and (max-width: 767px){
-
-  .logo img{
-width: 40vh;
-height: auto;
-margin-top: 10vw;
+@media only screen and (max-width: 767px) {
+  .logo img {
+    width: 40vh;
+    height: auto;
+    margin-top: 10vw;
   }
-  label{
+  label {
     font-size: 5vw;
   }
 
-  .login-form-input{
-
+  .login-form-input {
     width: 20rem;
   }
   .login-form {
-margin-top: 20vw;
+    margin-top: 20vw;
   }
 
-  .form-submit-btn{
+  .form-submit-btn {
     width: 4rem;
     border-top: 3.5px solid variables.$dark-grey;
     font-size: 4vw;
-
+  }
+  .comment {
+    font-family: variables.$regular;
+    color: variables.$dark-grey;
+    opacity: 60%;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+    width: 87vw;
+    text-align: left;
   }
 }
 //end of form
