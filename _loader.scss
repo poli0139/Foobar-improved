@@ -1,105 +1,102 @@
 @use "variables";
 
+.loader {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(66, 66, 66, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -29;
+}
+
+.welcome {
+  width: 1207px;
+  height: 665px;
+  padding-top: 10vw;
+  box-shadow: 1px 1px 10px #333;
+  border-radius: 9px;
+  background-image: url(assets/beer-liquid.png);
+  opacity: 52%;
+  position: relative;
+  animation: fade-out 3s 1 linear;
+}
+
+.logo2 {
+  visibility: hidden;
+  display: none;
+}
+.hi,
+.shift {
+  font-family: variables.$regular;
+  color: variables.$dark-grey;
+  font-size: 140px;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+//responsiveness
+
+@media only screen and (max-width: 767px) {
   .loader {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    background-color:rgba(66,66,66, .5);
+    background-color: variables.$background-light;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-   
   }
-  
-.welcome {
+
+  .welcome {
     width: 1207px;
-    height: 665px;
+    height: 735px;
     padding-top: 10vw;
-    box-shadow: 1px 1px 10px #333;
-    border-radius: 9px;
-    background-image: url(assets/beer-liquid.png);
-    opacity: 52%;
+    background-image: none;
+    background-color: variables.$background-light;
     position: relative;
     animation: fade-out 3s 1 linear;
   }
 
-.logo2{
-    visibility: hidden;
-    display: none;
-}
-.hi, .shift{
+  .logo2 {
+    visibility: visible;
+    display: block;
+    margin-top: 0;
+  }
+  .logo2 img {
+    margin-top: 0;
+    height: 9vh;
+    width: auto;
+  }
+  .hi {
+    margin-top: 35vw;
+  }
+  .hi,
+  .shift {
     font-family: variables.$regular;
     color: variables.$dark-grey;
-    font-size: 140px;
+    font-size: 70px;
     display: flex;
     justify-content: center;
     z-index: 3;
-
+  }
 }
 
-
-@keyframes fade-out {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  //responsiveness
-
-  @media only screen and (max-width: 767px){
-    .loader {
-        position:fixed;
-        top:0;
-        left:0;
-        width:100vw;
-        height: 100vh;
-        background-color:variables.$background-light;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-       
-      }
-  
-    .welcome {
-        width: 1207px;
-        height: 735px;
-        padding-top: 10vw;
-        background-image: none;
-    background-color: variables.$background-light;
-        position: relative;
-        animation: fade-out 3s 1 linear;
-      }
-
-      .logo2{
-          visibility: visible;
-          display: block;
-          margin-top: 0;
-    
-      }
-      .logo2  img {
-          margin-top: 0;
-        height: 9vh;
-        width: auto;
-      }
-      .hi{
-        margin-top: 35vw;
-      }
-      .hi, .shift{
-        font-family: variables.$regular;
-        color: variables.$dark-grey;
-        font-size: 70px;
-        display: flex;
-        justify-content: center;
-        z-index: 3;
-    
-    }
-    }
-
-    //end of responsiveness
+//end of responsiveness
