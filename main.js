@@ -34,6 +34,7 @@ const checkLength = (input, min) => {
 
 const checkName = (input) => {
   if (input.value === "Jonas") {
+    2;
     succes(input);
     init();
     // window.location.href="index.html";
@@ -68,16 +69,19 @@ form.addEventListener("submit", (e) => {
 function init() {
   const nameBartender = document.querySelector(".name");
   const nameValue = document.getElementById("Username").value;
-  nameBartender.innerHTML = nameValue;
+  nameBartender.innerHTML = nameValue.trim();
   const screen1 = document.querySelector(".screen1");
   const loader = document.querySelector(".loader");
   const main = document.querySelector(".main");
+  const logo2 = document.querySelector(".logo2");
   screen1.style.display = "none";
   loader.style.display = "flex";
   loader.style.visibility = "visible";
+
   setTimeout(() => {
     loader.style.display = "none";
     loader.style.visibility = "hidden";
     main.style.display = "block";
   }, 3000);
 }
+//enf of loading animation
