@@ -10,7 +10,9 @@ body {
   margin: 0;
   background-color: variables.$background-light;
 }
-
+.main {
+  display: none;
+}
 header {
   width: 100%;
   display: flex;
