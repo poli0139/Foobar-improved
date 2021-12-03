@@ -13,13 +13,28 @@ body {
 
 header {
   width: 100%;
-  text-align: center;
-  font-family: variables.$regular;
+  display: flex;
+  justify-content: space-between;
+  font-family: variables.$light;
+  color: variables.$dark-grey;
+  align-items: center;
+  margin-bottom: 1rem;
+  .logo {
+    width: 15rem;
+    height: fit-content;
+  }
+  .switch {
+    width: 6rem;
+    height: fit-content;
+  }
+  h1 {
+    font-size: 3rem;
+  }
 }
 
 main {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 0.7fr 1.3fr 1fr;
   grid-template-rows: 0.5fr 1.5fr;
   column-gap: 3vw;
   row-gap: 3vw;
@@ -28,6 +43,9 @@ main {
 .bartender {
   grid-column-start: 1;
   grid-column-end: 3;
+  .exit {
+    display: none;
+  }
 }
 .overview {
   grid-column-start: 1;
@@ -76,9 +94,144 @@ main {
   .overview {
     grid-row-start: 3;
     grid-column-end: 6;
+    .storageitems {
+      height: 10vw;
+    }
   }
   .bartender {
     grid-column-start: 2;
     grid-column-end: 5;
+  }
+  .logout {
+    grid-column-start: 3;
+    grid-column-end: 5;
+  }
+}
+@media only screen and (max-width: 575px) {
+  header {
+    justify-content: space-around;
+    .logo {
+      width: 10rem;
+    }
+    .switch {
+      width: 5rem;
+    }
+  }
+  .bartender {
+    grid-column-start: 1;
+    grid-column-end: 6;
+  }
+  .overview {
+    .storageitems {
+      height: 20vw;
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .subheading {
+    font-family: variables.$light;
+    font-size: 2rem;
+  }
+  header {
+    h1,
+    .switch {
+      display: none;
+    }
+    .logo {
+      width: 50vw;
+    }
+  }
+  main {
+    margin: 0;
+    padding: 0;
+    grid-template-rows: 0.3fr 1.35fr 1.35fr;
+  }
+  .bartender {
+    margin: 0 1rem;
+    height: fit-content;
+    .logout {
+      display: none;
+    }
+    .exit {
+      display: block;
+      border: none;
+      background: none;
+      grid-column-start: 4;
+      grid-column-end: 5;
+      align-self: flex-end;
+      img {
+        width: 8vw;
+      }
+    }
+    img {
+      align-self: flex-start;
+      margin-top: 1rem;
+    }
+    .bartenderinfo {
+      margin-top: 1rem;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      div {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+  .yourTask {
+    background-color: variables.$section-background;
+    border-radius: 0;
+    padding: 0;
+    height: fit-content;
+    h1 {
+      padding-left: 1rem;
+    }
+  }
+  .order {
+    background-color: transparent;
+    box-shadow: none;
+    padding-left: 1rem;
+    ul {
+      height: auto;
+      overflow: none;
+      font-size: 2rem;
+      font-family: variables.$light;
+    }
+    .time-button {
+      text-align: center;
+      p {
+        font-size: 2rem;
+      }
+      .done-btn {
+        width: 20vw;
+      }
+    }
+  }
+  .nextInQueue {
+    background-color: variables.$background-light;
+    border-top: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: solid variables.$dark-green 3px;
+    .people-queue {
+      justify-content: start;
+    }
+    .singlePerson {
+      flex-basis: 30%;
+    }
+  }
+  .overview {
+    .storage {
+      border-radius: 0;
+      box-shadow: none;
+      background-color: transparent;
+      ul li {
+        margin: 0.5rem 0;
+        font-family: variables.$light;
+      }
+    }
+    .storageitems {
+      height: auto;
+      overflow: none;
+    }
   }
 }
