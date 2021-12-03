@@ -8,14 +8,65 @@
     <title>FooBar</title>
   </head>
 
+  <!--loading animation-->
+
+  <div class="loader">
+    <div class="welcome">
+      <div class="logo2">
+        <img src="/assets/logo-green.png" alt="logo" />
+      </div>
+      <p class="hi">Hi, &nbsp; <span class="name"></span></p>
+      <br />
+      <p class="shift">Have a nice shift!</p>
+    </div>
+  </div>
+
+  <!--end of loading animation-->
+  <!-- form -->
+
   <body>
     <header>
       <img class="logo" src="assets/logo-green.png" alt="logo" />
       <h1>19:30</h1>
       <img class="switch" src="assets/FooBar-switch.png" alt="mode-switch" />
     </header>
+    <div class="screen1">
+      <div class="logo">
+        <img src="/assets/logo-green.png" alt="logo" />
+      </div>
 
-    <main>
+      <div class="form-wrapper">
+        <form class="login-form" id="myform" method="POST" name="login">
+          <label>Username</label>
+          <span class="comment">
+            Valid Usernames: Jonas, Klaus, Peter, Dannie
+          </span>
+          <input
+            type="text"
+            class="login-form-input"
+            placeholder="Jonas"
+            id="Username"
+            autocomplete="off"
+            name="username"
+          />
+          <p class="message">Error Message</p>
+          <label>Password</label>
+          <span class="comment"> Valid Password: 12345678 </span>
+          <input
+            type="password"
+            class="login-form-input"
+            placeholder="********"
+            id="Password"
+            autocomplete="off"
+            name="password"
+          />
+          <p class="message">Error Message</p>
+          <input type="submit" class="form-submit-btn" value="LOG IN" />
+        </form>
+      </div>
+    </div>
+    <!-- end of form -->
+    <main class="main">
       <section class="bartender">
         <img class="bartender-img" src="assets/bartender-green.png" alt="" />
         <div class="bartenderinfo">
