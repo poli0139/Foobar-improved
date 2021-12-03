@@ -8,14 +8,11 @@
   list-style-type: none;
   outline: none;
 }
-html {
-  margin: 0;
-  height: 100%;
-  border-left: 7vw solid;
-  border-left-color: variables.$yellow;
-}
+
 body {
   background-color: variables.$background-light;
+  border-left: 7vw solid;
+  border-left-color: variables.$yellow;
 }
 .nav {
   display: flex;
