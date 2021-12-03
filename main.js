@@ -81,7 +81,7 @@ function init() {
   setTimeout(() => {
     loader.style.display = "none";
     loader.style.visibility = "hidden";
-    main.style.display = "block";
+    main.style.display = "grid";
   }, 3000);
 }
 //enf of loading animation

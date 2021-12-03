@@ -9,5 +9,6 @@
   "devDependencies": {
     "sass": "^1.43.5",
     "vite": "^2.6.4"
-  }
+  },
+  "dependencies": {}
 }

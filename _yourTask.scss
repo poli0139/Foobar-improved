@@ -1,0 +1,81 @@
+@use "variables";
+
+.yourTask {
+  background-color: variables.$section-background;
+  border-radius: 20px;
+  padding: 0 2rem;
+  box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
+}
+.order {
+  background-color: variables.$background-light;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: variables.$regular;
+  box-shadow: 2px 2px 6px variables.$background-light;
+  .orderList {
+    width: 70%;
+  }
+  ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    font-size: 1.5rem;
+    margin-top: 0;
+    height: 5.5rem;
+    row-gap: 0.3rem;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: variables.$dark-green variables.$section-background;
+  }
+  ul::-webkit-scrollbar {
+    width: 7px;
+    background: variables.$section-background;
+  }
+  ul::-webkit-scrollbar-thumb {
+    background: variables.$dark-green;
+  }
+  .time-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      font-size: 3vh;
+      margin: 0;
+    }
+  }
+}
+.nextInQueue {
+  margin-top: 2rem;
+  border-top: solid variables.$background-light 2px;
+  .people-queue {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .singlePerson {
+    flex-basis: 22%;
+    text-align: center;
+    font-family: variables.$regular;
+    color: variables.$dark-grey;
+    font-size: 1.2rem;
+
+    .length {
+      border: solid variables.$dark-grey 1px;
+      width: fit-content;
+      padding: 0.3rem;
+      margin-left: auto;
+      z-index: 2;
+      font-family: variables.$semiBold;
+      transform: translate(-10px, 10px);
+    }
+    img {
+      height: 5rem;
+    }
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

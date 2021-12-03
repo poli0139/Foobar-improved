@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/style.scss" />
     <title>FooBar</title>
   </head>
-  <header></header>
 
   <!--loading animation-->
 
@@ -25,6 +24,11 @@
   <!--end of loading animation-->
   <!-- form -->
   <body>
+    <header>
+      <img class="logo" src="assets/logo-green.png" alt="logo" />
+      <h1>19:30</h1>
+      <img class="switch" src="assets/FooBar-switch.png" alt="mode-switch" />
+    </header>
     <div class="screen1">
       <div class="logo">
         <img src="/assets/logo-green.png" alt="logo" />
@@ -33,12 +37,28 @@
       <div class="form-wrapper">
         <form class="login-form" id="myform" method="POST" name="login">
           <label>Username</label>
-          <span class="comment"> Valid Usernames: Jonas, Klaus, Peter, Dannie </span>
-          <input type="text" class="login-form-input" placeholder="Jonas" id="Username" autocomplete="off" name="username" />
+          <span class="comment">
+            Valid Usernames: Jonas, Klaus, Peter, Dannie
+          </span>
+          <input
+            type="text"
+            class="login-form-input"
+            placeholder="Jonas"
+            id="Username"
+            autocomplete="off"
+            name="username"
+          />
           <p class="message">Error Message</p>
           <label>Password</label>
           <span class="comment"> Valid Password: 12345678 </span>
-          <input type="password" class="login-form-input" placeholder="********" id="Password" autocomplete="off" name="password" />
+          <input
+            type="password"
+            class="login-form-input"
+            placeholder="********"
+            id="Password"
+            autocomplete="off"
+            name="password"
+          />
           <p class="message">Error Message</p>
           <input type="submit" class="form-submit-btn" value="LOG IN" />
         </form>
@@ -46,6 +66,221 @@
     </div>
     <!-- end of form -->
 
+    <main class="main">
+      <section class="bartender">
+        <img src="assets/bartender-green.png" alt="" />
+        <div class="bartenderinfo">
+          <h1 class="name">PETER</h1>
+          <div>
+            <p>Your shift</p>
+            <p>17:00-01:00</p>
+          </div>
+        </div>
+        <button class="button logout">LOG OUT</button>
+        <button class="exit"><img src="assets/exit_restirezed.png" /></button>
+      </section>
+
+      <section class="overview">
+        <h1 class="section-heading">Overview</h1>
+        <div class="taps">
+          <div class="toptaps">
+            <h2 class="subheading">TAPS</h2>
+            <div class="legend">
+              <div class="reddot"></div>
+              <p>In use</p>
+              <div class="greendot"></div>
+              <p>Availalbe</p>
+            </div>
+          </div>
+          <div class="bottomtaps">
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+            <div class="tap">
+              <div class="reddot"></div>
+              <div class="progress">
+                <span class="progress-text">25%</span>
+
+                <div class="progress-fill"></div>
+              </div>
+              <p class="namebeer">Steampunk</p>
+            </div>
+          </div>
+        </div>
+        <div class="storage">
+          <h2 class="subheading">STORAGE</h2>
+          <div class="storageitems">
+            <ul>
+              <li>
+                <span class="namebeer">El Hefe</span
+                ><span class="amountbeer">x4</span>
+              </li>
+              <li>
+                <span class="namebeer">Fairy Tale Ale</span
+                ><span class="amountbeer">x5</span>
+              </li>
+              <li>
+                <span class="namebeer">Git Hop</span
+                ><span class="amountbeer">x3</span>
+              </li>
+              <li>
+                <span class="namebeer">Hollaback Lager</span
+                ><span class="amountbeer">x1</span>
+              </li>
+              <li>
+                <span class="namebeer">Hoppily Ever After</span
+                ><span class="amountbeer">x2</span>
+              </li>
+              <li>
+                <span class="namebeer">Mowintime</span
+                ><span class="amountbeer">x5</span>
+              </li>
+              <li>
+                <span class="namebeer">Row 26</span
+                ><span class="amountbeer">x3</span>
+              </li>
+              <li>
+                <span class="namebeer">Ruined Childhood</span
+                ><span class="amountbeer">x6</span>
+              </li>
+              <li>
+                <span class="namebeer">Sleighride</span
+                ><span class="amountbeer">x3</span>
+              </li>
+              <li>
+                <span class="namebeer">Steampunk</span
+                ><span class="amountbeer">x2</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="yourTask">
+        <h1 class="section-heading">Your task</h1>
+        <div class="order">
+          <div class="orderList">
+            <h2 class="subheading">Order <span class="orderId">#112</span></h2>
+            <ul>
+              <li class="singleOrder">
+                <span class="amount">1</span> x
+                <span class="name">Ruined Childhood</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">2</span> x
+                <span class="name">Row 26</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">5</span> x
+                <span class="name">Steampunk</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">1</span> x
+                <span class="name">Ruined Childhood</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">2</span> x
+                <span class="name">Row 26</span>
+              </li>
+              <li class="singleOrder">
+                <span class="amount">5</span> x
+                <span class="name">Steampunk</span>
+              </li>
+            </ul>
+          </div>
+          <div class="time-button">
+            <p class="order-time">19:25</p>
+            <button class="button done-btn">Done</button>
+          </div>
+        </div>
+
+        <div class="nextInQueue">
+          <h1 class="section-heading">next in queue</h1>
+          <div class="people-queue">
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+            <div class="singlePerson">
+              <p class="length">1</p>
+              <img src="assets/next_light-green.png" alt="next-in-queue" />
+              <p class="orderId">#112</p>
+              <p class="orderTime">19:27</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
