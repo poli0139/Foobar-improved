@@ -37,8 +37,9 @@ main {
   grid-template-columns: 1fr 1fr 0.7fr 1.3fr 1fr;
   grid-template-rows: 0.5fr 1.5fr;
   column-gap: 3vw;
-  row-gap: 3vw;
+  // row-gap: 3vw; -- we do not need it
   margin: 0 2rem;
+  margin-bottom: 2vw;
 }
 .bartender {
   grid-column-start: 1;
@@ -47,9 +48,13 @@ main {
     display: none;
   }
 }
+
 .overview {
   grid-column-start: 1;
   grid-column-end: 4;
+}
+.taps {
+  margin-bottom: 3vw;
 }
 .yourTask {
   grid-column-start: 4;
@@ -80,11 +85,13 @@ main {
   font-size: 1.5rem;
   text-transform: uppercase;
   border-top: solid variables.$dark-green 2px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 900px) {
   main {
     grid-template-rows: 0.5fr 1.5fr 1fr;
+    row-gap: 3vw;
   }
   .yourTask {
     grid-column-start: 1;
@@ -126,6 +133,9 @@ main {
       height: 20vw;
     }
   }
+  .yourTask {
+    box-shadow: 0px 0px 0px 0px;
+  }
 }
 @media only screen and (max-width: 480px) {
   .subheading {
@@ -144,7 +154,7 @@ main {
   main {
     margin: 0;
     padding: 0;
-    grid-template-rows: 0.3fr 1.35fr 1.35fr;
+    grid-template-rows: 0.3fr 1.2fr 1.35fr;
   }
   .bartender {
     margin: 0 1rem;
@@ -220,6 +230,7 @@ main {
     }
   }
   .overview {
+    grid-row-start: 3;
     .storage {
       border-radius: 0;
       box-shadow: none;
