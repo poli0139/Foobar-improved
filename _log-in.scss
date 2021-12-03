@@ -1,10 +1,154 @@
 @use "variables";
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style-type: none;
-    outline: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
 }
+html {
+  margin: 0;
+  height: 100%;
+  border-left: 7vw solid;
+  border-left-color: variables.$yellow;
+}
+body {
+  background-color: variables.$background-light;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+  height: 10vh;
+}
+.switch img {
+  width: 6vw;
+}
+
+.logo {
+  text-align: center;
+}
+.logo img {
+  height: 27vh;
+  width: auto;
+}
+
+.comment {
+  font-family: variables.$regular;
+  color: variables.$dark-grey;
+  opacity: 60%;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  // display: block;
+  width: 17vw;
+  text-align: left;
+}
+
+//Login form
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vw;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 2.5vw;
+  color: variables.$dark-grey;
+  font-family: variables.$regular;
+}
+
+.login-form-input {
+  width: 40rem;
+  padding: 0.5rem;
+  // margin: 1rem 0;
+  border: 0.1rem solid variables.$dark-grey;
+  border-radius: 10px;
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  height: 3rem;
+}
+
+.form-submit-btn {
+  margin-top: 2vw;
+  width: 8rem;
+  background-color: transparent;
+  border-top: 3.5px solid variables.$dark-grey;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  align-self: flex-end;
+  font-size: 2.5vw;
+  color: variables.$dark-grey;
+  font-family: variables.$semiBold;
+}
+
+//End of contact form
+
+// form valiadation
+
+.message {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: variables.$red;
+  letter-spacing: 0.1rem;
+  align-self: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-family: variables.$regular;
+}
+
+.error.message {
+  visibility: visible;
+  opacity: 1;
+}
+// end of form validation
+
+//responsiveness
+@media only screen and (max-width: 767px) {
+  .logo img {
+    width: 40vh;
+    height: auto;
+    margin-top: 10vw;
+  }
+  label {
+    font-size: 5vw;
+  }
+
+  .login-form-input {
+    width: 20rem;
+  }
+  .login-form {
+    margin-top: 20vw;
+  }
+
+  .form-submit-btn {
+    width: 4rem;
+    border-top: 3.5px solid variables.$dark-grey;
+    font-size: 4vw;
+  }
+  .comment {
+    font-family: variables.$regular;
+    color: variables.$dark-grey;
+    opacity: 60%;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+    width: 87vw;
+    text-align: left;
+  }
+  // .logo2 img {
+  //   display:none;
+  //   visibility: hidden;
+  // }
+}
+//end of form
