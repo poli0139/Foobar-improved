@@ -11,32 +11,46 @@ function loadJSON() {
     });
 }
 function prepareObjects(jsonData) {
-  console.log(jsonData);
-  console.log(jsonData.bar);
-  console.log(jsonData.bar.name);
+  // console.log(jsonData);
+  // console.log(jsonData.bar);
+  // console.log(jsonData.bar.name);
   showBeerTap(jsonData.taps);
-
-
-  // jsonData.forEach((elem) => {
-  //   console.log(elem);
-
-  // });
+  showQueue(jsonData.queue);
+  showStorage(jsonData.storage);
 }
-// function displayBartender(bartenders) {
-// bartenders.forEach((bartender) => {
-//   console.log(bartender);
-// });
-//   console.log(bartenders[1]);
-//   const Klaus = bartenders[1];
-//   let bartenderTab = document.querySelector(".bartender");
-//   bartenderTab.querySelector(".name").textContent = Klaus.name;
-// }
+
 function showBeerTap(taps) {
   const template = document.querySelector(".tapBeerTemplate").content;
   taps.forEach((tap) => {
     const copy = template.cloneNode(true);
     copy.querySelector(".namebeer").textContent = tap.beer;
     document.querySelector(".bottomtaps").appendChild(copy);
+  });
+}
+
+//NEXT IN QUEUE
+function showQueue(peopleQueue) {
+  // console.log(peopleQueue);
+  const template = document.querySelector(".nextInQueueTemplate").content;
+  peopleQueue.forEach((person) => {
+    const copy = template.cloneNode(true);
+    // console.log(person);
+    copy.querySelector(".length").textContent = person.order.length;
+    copy.querySelector(".orderId span").textContent = person.id;
+    document.querySelector(".people-queue").appendChild(copy);
+  });
+}
+
+//STORAGE
+function showStorage(storage) {
+  console.log(storage);
+  const template = document.querySelector(".storageTemplate").content;
+  storage.forEach((beer) => {
+    console.log(beer);
+    const copy = template.cloneNode(true);
+    copy.querySelector(".namebeer").textContent = beer.name;
+    copy.querySelector(".amountbeer").textContent = `x${beer.amount}`;
+    document.querySelector(".storageitems ul").appendChild(copy);
   });
 }
 
