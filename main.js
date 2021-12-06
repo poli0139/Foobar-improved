@@ -8,6 +8,9 @@ const password = document.getElementById("Password");
 const message = document.getElementById("message");
 const messages = document.querySelectorAll(".message");
 const button = document.querySelector(".form-submit-btn");
+const header = document.querySelector("header");
+
+header.style.visibility="hidden";
 
 const error = (input, message) => {
   input.nextElementSibling.classList.add("error");
@@ -74,14 +77,21 @@ function init() {
   const loader = document.querySelector(".loader");
   const main = document.querySelector(".main");
   const logo2 = document.querySelector(".logo2");
+  const header = document.querySelector("header");
+  const body = document.querySelector("body");
   screen1.style.display = "none";
+
   loader.style.display = "flex";
   loader.style.visibility = "visible";
+  body.style.borderLeft = "0";
+
 
   setTimeout(() => {
     loader.style.display = "none";
     loader.style.visibility = "hidden";
     main.style.display = "grid";
-  }, 3000);
+  header.style.visibility ="visible";
+
+  }, 2000);
 }
 //enf of loading animation
