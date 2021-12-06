@@ -76,7 +76,6 @@ function init() {
   const screen1 = document.querySelector(".screen1");
   const loader = document.querySelector(".loader");
   const main = document.querySelector(".main");
-  const logo2 = document.querySelector(".logo2");
   const header = document.querySelector("header");
   const body = document.querySelector("body");
   screen1.style.display = "none";
@@ -84,6 +83,7 @@ function init() {
   loader.style.display = "flex";
   loader.style.visibility = "visible";
   body.style.borderLeft = "0";
+ 
 
 
   setTimeout(() => {

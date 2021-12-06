@@ -132,6 +132,8 @@ label {
   }
   .login-form {
     margin-top: 20vw;
+    display: flex;
+    justify-content: center;
   }
 
   .form-submit-btn {
@@ -149,9 +151,6 @@ label {
     width: 87vw;
     text-align: left;
   }
-  // .logo2 img {
-  //   display:none;
-  //   visibility: hidden;
-  // }
+
 }
 //end of form
