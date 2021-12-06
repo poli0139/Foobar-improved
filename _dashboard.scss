@@ -22,18 +22,19 @@ header {
   color: variables.$dark-grey;
   align-items: center;
   margin-bottom: 1rem;
-  visibility: hidden;
+  // visibility: hidden;
   .logo {
     width: 15rem;
     height: fit-content;
   }
-  .switch {
-    width: 6rem;
-    height: fit-content;
-  }
+
   h1 {
     font-size: 3rem;
   }
+}
+.switch {
+  width: 6rem;
+  height: fit-content;
 }
 
 main {

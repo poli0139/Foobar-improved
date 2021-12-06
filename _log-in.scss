@@ -20,12 +20,10 @@ body {
   margin: 5px;
   height: 10vh;
 }
-.switch2  {
-  width: 6rem;
-  height: fit-content;
-  float: right;
-  margin-top: -10vh;
-
+.screen1 {
+  .switch {
+    float: right;
+  }
 }
 
 .logo3 {
@@ -124,9 +122,9 @@ label {
   label {
     font-size: 5vw;
   }
-.switch2{
-  visibility: hidden;
-}
+  .switch2 {
+    visibility: hidden;
+  }
   .login-form-input {
     width: 20rem;
   }
