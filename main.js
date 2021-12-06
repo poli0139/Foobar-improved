@@ -1,4 +1,5 @@
 "use stict;";
+// fetching data
 window.addEventListener("DOMContentLoaded", loadJSON);
 
 function loadJSON() {
@@ -14,8 +15,10 @@ function prepareObjects(jsonData) {
   console.log(jsonData.bar);
   console.log(jsonData.bar.name);
 
+
   // jsonData.forEach((elem) => {
   //   console.log(elem);
+
   // });
 }
 
