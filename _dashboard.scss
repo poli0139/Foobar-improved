@@ -22,6 +22,7 @@ header {
   color: variables.$dark-grey;
   align-items: center;
   margin-bottom: 1rem;
+  visibility: hidden;
   .logo {
     width: 15rem;
     height: fit-content;

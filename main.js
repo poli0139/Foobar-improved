@@ -90,6 +90,7 @@ function init() {
     loader.style.display = "none";
     loader.style.visibility = "hidden";
     main.style.display = "grid";
+    header.style.visibility = "visible";
     document.querySelector("body").style.borderLeft = "none";
   }, 3000);
 }
