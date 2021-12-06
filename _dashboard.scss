@@ -8,6 +8,7 @@
 body {
   padding: 0;
   margin: 0;
+  height: 100vh;
   background-color: variables.$background-light;
 }
 .main {
@@ -68,14 +69,14 @@ main {
 .section-heading {
   font-family: variables.$semiBold;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0.5rem auto;
   color: variables.$dark-green;
 }
 .subheading {
   font-family: variables.$semiBold;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-top: 0;
   color: variables.$dark-green;
 }

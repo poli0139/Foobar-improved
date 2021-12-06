@@ -1,0 +1,74 @@
+@use "variables";
+.dark {
+  background-color: variables.$dark-grey;
+  main,
+  header {
+    background-color: variables.$dark-grey;
+  }
+  .subheading,
+  .section-heading,
+  .logout {
+    color: variables.$yellow;
+  }
+  .bartender {
+    border: solid 3px variables.$yellow;
+  }
+  .yourTask,
+  .taps,
+  .storage {
+    background-color: variables.$light-grey;
+  }
+  .storage ul li {
+    border-bottom: solid 1px variables.$background-light;
+  }
+  .nextInQueue {
+    .length {
+      border: solid variables.$background-light 1px;
+    }
+  }
+  .order {
+    background-color: #bcb8b8;
+    box-shadow: 2px 2px 6px #bcb8b8;
+    .subheading {
+      color: variables.$dark-grey;
+    }
+    .time-button {
+      p {
+        color: variables.$dark-grey;
+      }
+    }
+  }
+  .order ul,
+  .storageitems {
+    scrollbar-color: variables.$dark-grey variables.$background-light;
+  }
+  .order ul::-webkit-scrollbar,
+  .storageitems::-webkit-scrollbar {
+    background: variables.$background-light;
+  }
+  .order ul::-webkit-scrollbar-thumb,
+  .storageitems::-webkit-scrollbar-thumb {
+    background: variables.$dark-grey;
+  }
+
+  ul li,
+  .namebeer,
+  p,
+  .name,
+  .done-btn,
+  header h1 {
+    color: variables.$background-light;
+  }
+  .reddot {
+    background-color: #e26133;
+  }
+  .greendot {
+    background-color: #2b6512;
+  }
+  .done-btn {
+    border-top: solid variables.$background-light 2px;
+  }
+  .logout {
+    border-top: solid variables.$yellow 2px;
+  }
+}
