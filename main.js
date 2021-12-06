@@ -17,6 +17,8 @@ function prepareObjects(jsonData) {
   showBeerTap(jsonData.taps);
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
+  showTask(jsonData.serving);
+  // showBartender(jsonData.bartenders);
 }
 
 function showBeerTap(taps) {
@@ -43,10 +45,10 @@ function showQueue(peopleQueue) {
 
 //STORAGE
 function showStorage(storage) {
-  console.log(storage);
+  // console.log(storage);
   const template = document.querySelector(".storageTemplate").content;
   storage.forEach((beer) => {
-    console.log(beer);
+    // console.log(beer);
     const copy = template.cloneNode(true);
     copy.querySelector(".namebeer").textContent = beer.name;
     copy.querySelector(".amountbeer").textContent = `x${beer.amount}`;
@@ -54,6 +56,48 @@ function showStorage(storage) {
   });
 }
 
+//BARTENDER
+
+// function showBartender(bartender){
+// const currentBart = document.querySelector(".name2").textContent = bartender.name;
+// console.log(bartender.name);
+//    const nameBartender2 = document.querySelector(".name2")
+// nameBartender2 = bartender.name;
+// const nameValue2 = document.getElementById("Username").value;
+// nameBartender2.innerHTML = nameValue2;
+//   const template = document.querySelector(".bartender2").content;
+//     const clone = template.cloneNode(true);
+//     clone.querySelector(".name2").textContent=employee.name;
+//      const nameValue2 = document.getElementById("Username").value;
+//     nameBartender2.innerHTML = employee.name;
+//     document.querySelector(".bartender").appendChild(clone);
+
+
+// }
+
+//TASK
+
+function showTask(serving){
+  console.log(serving);
+  const template = document.querySelector(".task").content;
+  serving.forEach((order)=>{
+    console.log(order);
+    const clone = template.cloneNode(true);
+    clone.querySelector(".subheading2 span").textContent = `#${order.id}`;
+
+    // clone.querySelector(".amount3").textContent = order.order.length;
+    clone.querySelector(".name3").textContent =  " " + order.order;
+
+    document.querySelector(".orderList").appendChild(clone);
+  })
+}
+
+//LOG OUT
+
+document.querySelector(".logout").addEventListener("click", reset);
+function reset() {
+  location.reload();
+}
 //form
 
 const form = document.querySelector(".login-form");
@@ -141,6 +185,9 @@ function init() {
  
 
   setTimeout(() => {
+    const nameBartender2 = document.querySelector(".name2");
+    const nameValue2 = document.getElementById("Username").value;
+    nameBartender2.innerHTML = nameValue2;
     loader.style.display = "none";
     loader.style.visibility = "hidden";
     main.style.display = "grid";

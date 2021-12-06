@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" href="/assets/logo-green.png" type="image/icon type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.scss" />
     <title>FooBar</title>
@@ -13,7 +13,7 @@
   <div class="loader">
     <div class="welcome">
       <div class="logo2">
-        <img src="/assets/logo-green.png" alt="logo" />
+        <img src="assets/logo-green.png" alt="logo" />
       </div>
       <p class="hi">Hi, &nbsp; <span class="name"></span></p>
       <br/>
@@ -36,7 +36,7 @@
     <div class="screen1">
       <img class="switch" src="assets/FooBar-switch.png" alt="mode-switch" />
       <div class="logo3">
-        <img src="/assets/logo-green.png" alt="logo" />
+        <img src="assets/logo-green.png" alt="logo" />
       </div>
 
       <div class="form-wrapper">
@@ -74,7 +74,8 @@
       <section class="bartender">
         <img class="bartender-img" src="assets/bartender-green.png" alt="" />
         <div class="bartenderinfo">
-          <h1 class="name">PETER</h1>
+          
+          <h1 class="name2">PETER</h1>
           <div>
             <p>Your shift</p>
             <p>17:00-01:00</p>
@@ -128,14 +129,18 @@
       <section class="yourTask">
         <h1 class="section-heading">Your task</h1>
         <div class="order">
-          <div class="orderList">
-            <h2 class="subheading">Order <span class="orderId">#112</span></h2>
+          <div class="orderList"></div>
+
+            <template class ="task">
+            <h2 class="subheading2">Order <span class="orderId">#112</span></h2>
             <ul>
               <li class="singleOrder">
-                <span class="amount">1</span> x
-                <span class="name">Ruined Childhood</span>
+                <!-- <span class="amount3">1</span> x -->
+                <li class="name3">Ruined Childhood</li>
               </li>
-              <li class="singleOrder">
+            </ul>
+            </template>
+              <!-- <li class="singleOrder">
                 <span class="amount">2</span> x
                 <span class="name">Row 26</span>
               </li>
@@ -156,7 +161,7 @@
                 <span class="name">Steampunk</span>
               </li>
             </ul>
-          </div>
+          </div> -->
           <div class="time-button">
             <p class="order-time">19:25</p>
             <button class="button done-btn">Done</button>

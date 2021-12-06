@@ -25,9 +25,17 @@ body {
     float: right;
   }
 }
-
+.logo2 {
+  visibility: hidden;
+  display: none;
+}
+.logo2 img {
+  visibility: hidden;
+  display: none;
+}
 .logo3 {
   text-align: center;
+  padding-top: 3vw;
 }
 .logo3 img {
   height: 27vh;
@@ -119,14 +127,17 @@ label {
     height: auto;
     margin-top: 9vw;
   }
+
   label {
     font-size: 5vw;
   }
-  .switch2 {
+  .switch {
     visibility: hidden;
   }
   .login-form-input {
     width: 20rem;
+    
+
   }
   .login-form {
     margin-top: 20vw;
@@ -138,6 +149,7 @@ label {
     width: 4rem;
     border-top: 3.5px solid variables.$dark-grey;
     font-size: 4vw;
+
   }
   .comment {
     font-family: variables.$regular;
