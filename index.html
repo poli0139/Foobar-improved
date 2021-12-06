@@ -118,49 +118,13 @@
         <div class="storage">
           <h2 class="subheading">STORAGE</h2>
           <div class="storageitems">
-            <ul>
-              <li>
-                <span class="namebeer">El Hefe</span
-                ><span class="amountbeer">x4</span>
-              </li>
-              <li>
-                <span class="namebeer">Fairy Tale Ale</span
-                ><span class="amountbeer">x5</span>
-              </li>
-              <li>
-                <span class="namebeer">Git Hop</span
-                ><span class="amountbeer">x3</span>
-              </li>
-              <li>
-                <span class="namebeer">Hollaback Lager</span
-                ><span class="amountbeer">x1</span>
-              </li>
-              <li>
-                <span class="namebeer">Hoppily Ever After</span
-                ><span class="amountbeer">x2</span>
-              </li>
-              <li>
-                <span class="namebeer">Mowintime</span
-                ><span class="amountbeer">x5</span>
-              </li>
-              <li>
-                <span class="namebeer">Row 26</span
-                ><span class="amountbeer">x3</span>
-              </li>
-              <li>
-                <span class="namebeer">Ruined Childhood</span
-                ><span class="amountbeer">x6</span>
-              </li>
-              <li>
-                <span class="namebeer">Sleighride</span
-                ><span class="amountbeer">x3</span>
-              </li>
-              <li>
-                <span class="namebeer">Steampunk</span
-                ><span class="amountbeer">x2</span>
-              </li>
-            </ul>
+            <ul></ul>
           </div>
+          <template class="storageTemplate">
+            <li>
+              <span class="namebeer"></span><span class="amountbeer"></span>
+            </li>
+          </template>
         </div>
       </section>
       <section class="yourTask">
@@ -204,7 +168,7 @@
         <div class="nextInQueue">
           <h1 class="section-heading">next in queue</h1>
           <div class="people-queue">
-            <div class="singlePerson">
+            <!-- <div class="singlePerson">
               <p class="length">1</p>
               <img
                 class="next-icon"
@@ -243,18 +207,20 @@
               />
               <p class="orderId">#112</p>
               <p class="orderTime">19:27</p>
-            </div>
-            <div class="singlePerson">
-              <p class="length">1</p>
-              <img
-                class="next-icon"
-                src="assets/next_light-green.png"
-                alt="next-in-queue"
-              />
-              <p class="orderId">#112</p>
-              <p class="orderTime">19:27</p>
-            </div>
+            </div> -->
           </div>
+          <template class="nextInQueueTemplate">
+            <div class="singlePerson">
+              <p class="length"></p>
+              <img
+                class="next-icon"
+                src="assets/next_light-green.png"
+                alt="next-in-queue"
+              />
+              <p class="orderId">#<span></span></p>
+              <p class="orderTime">19:27</p>
+            </div>
+          </template>
         </div>
       </section>
     </main>
