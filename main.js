@@ -165,16 +165,22 @@ modeSwitch.onclick = function () {
     darkmode = true;
     console.log(darkmode);
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src =
+      "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     console.log(document.querySelectorAll(".next-icon"));
-    document.querySelectorAll(".next-icon").src = "assets/next_yellow.png";
+    document.querySelectorAll(".next-icon").forEach((element) => {
+      element.src = "assets/next_yellow.png";
+    });
   } else {
     darkmode = false;
     document.querySelector("body").classList.remove("dark");
     document.querySelector(".bartender-img").src = "assets/bartender-green.png";
     document.querySelector(".switch").src = "assets/FooBar-switch.png";
     document.querySelector(".logo").src = "assets/logo-green.png";
+    document.querySelectorAll(".next-icon").forEach((element) => {
+      element.src = "assets/next_light-green.png";
+    });
   }
 };
