@@ -1,4 +1,23 @@
 "use stict;";
+window.addEventListener("DOMContentLoaded", loadJSON);
+
+function loadJSON() {
+  fetch("https://foobarpm.herokuapp.com/")
+    .then((response) => response.json())
+    .then((jsonData) => {
+      // when loaded, prepare objects
+      prepareObjects(jsonData);
+    });
+}
+function prepareObjects(jsonData) {
+  console.log(jsonData);
+  console.log(jsonData.bar);
+  console.log(jsonData.bar.name);
+
+  // jsonData.forEach((elem) => {
+  //   console.log(elem);
+  // });
+}
 
 //form
 
