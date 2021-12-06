@@ -72,3 +72,22 @@
     border-top: solid variables.$yellow 2px;
   }
 }
+@media only screen and (max-width: 480px) {
+  .dark {
+    .yourTask,
+    .nextInQueue,
+    .taps,
+    .storage {
+      background-color: transparent;
+    }
+    .order {
+      background-color: variables.$light-grey;
+    }
+    .nextInQueue {
+      border-bottom: solid variables.$yellow 3px;
+    }
+    .legend p {
+      color: variables.$background-light;
+    }
+  }
+}

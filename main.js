@@ -28,8 +28,9 @@ const message = document.getElementById("message");
 const messages = document.querySelectorAll(".message");
 const button = document.querySelector(".form-submit-btn");
 const header = document.querySelector("header");
+let darkmode = false;
 
-header.style.visibility = "hidden";
+header.style.display = "none";
 
 const error = (input, message) => {
   input.nextElementSibling.classList.add("error");
@@ -108,7 +109,7 @@ function init() {
     loader.style.display = "none";
     loader.style.visibility = "hidden";
     main.style.display = "grid";
-    header.style.visibility = "visible";
+    header.style.display = "flex";
     document.querySelector("body").style.borderLeft = "none";
   }, 3000);
 }
@@ -175,7 +176,6 @@ window.addEventListener("DOMContentLoaded", () => {
   createBubbles(60, 100);
 });
 //DARK MODE
-let darkmode = false;
 
 const modeSwitch = document.querySelector(".switch");
 
@@ -184,16 +184,23 @@ modeSwitch.onclick = function () {
     darkmode = true;
     console.log(darkmode);
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src =
+      "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
-    console.log(document.querySelectorAll(".next-icon"));
-    document.querySelectorAll(".next-icon").src = "assets/next_yellow.png";
+    document.querySelectorAll(".next-icon").forEach((element) => {
+      element.src = "assets/next_yellow.png";
+    });
+    document.querySelector(".exit img").src = "assets/exit_white.png";
   } else {
     darkmode = false;
     document.querySelector("body").classList.remove("dark");
     document.querySelector(".bartender-img").src = "assets/bartender-green.png";
     document.querySelector(".switch").src = "assets/FooBar-switch.png";
     document.querySelector(".logo").src = "assets/logo-green.png";
+    document.querySelectorAll(".next-icon").forEach((element) => {
+      element.src = "assets/next_light-green.png";
+    });
+    document.querySelector(".exit img").src = "assets/exit_grey.png";
   }
 };
