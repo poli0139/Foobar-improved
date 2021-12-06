@@ -103,6 +103,7 @@
     width: 100%;
     height: 60%;
     background: variables.$yellow;
+    overflow: hidden;
   }
   .progress-text {
     // position: absolute;
@@ -113,6 +114,55 @@
     color: variables.$dark-grey;
     font-family: variables.$regular;
   }
+  .progress-fill > .bubbles1,
+  .progress-fill > .bubbles2,
+  .progress-fill > .bubbles3,
+  .progress-fill > .bubbles4,
+  .progress-fill > .bubbles5,
+  .progress-fill > .bubbles6,
+  .progress-fill > .bubbles7 {
+    width: 100%;
+    height: 100%;
+    transform: translateX(0%);
+    // transform: translateY(30%);
+  }
+  .progress-fill > .bubbles1 > .bubble1,
+  .progress-fill > .bubbles2 > .bubble2,
+  .progress-fill > .bubbles3 > .bubble3,
+  .progress-fill > .bubbles4 > .bubble4,
+  .progress-fill > .bubbles5 > .bubble5,
+  .progress-fill > .bubbles6 > .bubble6,
+  .progress-fill > .bubbles7 > .bubble7 {
+    background-color: variables.$background-light;
+    border-radius: 50%;
+    width: 0.4vw;
+    height: 0.4vw;
+    box-shadow: 0 0 1rem 0.1rem variables.$yellow;
+    transform: translateY(-5px);
+    position: fixed;
+    animation: fill 2s ease-out infinite;
+
+    // animation: float 3s linear infinite;
+  }
+  @keyframes fill {
+    from {
+      transform: translateY(8vw);
+    }
+    to {
+      transform: translateY(-2vw);
+    }
+  }
+  // @keyframes float {
+  //   0% {
+  //     transform: translateY(-5vw);
+  //   }
+  //   50% {
+  //     transform: translateY(25px);
+  //   }
+  //   100% {
+  //     transform: translateY(-5vw);
+  //   }
+  // }
   .namebeer {
     font-family: variables.$regular;
     color: variables.$dark-grey;
