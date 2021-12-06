@@ -144,12 +144,12 @@ function createBubbles(bubblesNumber, percent) {
     // const random6 = Math.floor(Math.random() * ((percent * 290) / 80));
     // const random7 = Math.floor(Math.random() * ((percent * 490) / 75));
 
-    const bubble1 = document.createElement("div");
-    bubble1.className = "bubble1";
-    bubble1.style.left = random + "px";
-    bubble1.style.opacity = random + "%";
-    bubble1.style.animationDelay = Math.random() * 2 + "s";
-    document.querySelector(".bubbles1").appendChild(bubble1);
+    // const bubble1 = document.createElement("div");
+    // bubble1.className = "bubble1";
+    // bubble1.style.left = random + "px";
+    // bubble1.style.opacity = random + "%";
+    // bubble1.style.animationDelay = Math.random() * 2 + "s";
+    // document.querySelector(".bubbles1").appendChild(bubble1);
     // const bubble2 = document.createElement("div");
     // bubble2.className = "bubble2";
     // bubble2.style.left = random2 + "px";
