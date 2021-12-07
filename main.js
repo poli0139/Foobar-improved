@@ -1,4 +1,5 @@
 "use stict;";
+// fetching data
 window.addEventListener("DOMContentLoaded", loadJSON);
 // let allBeers = [];
 const Beertap = {
@@ -15,45 +16,92 @@ function loadJSON() {
     });
 }
 function prepareObjects(jsonData) {
-  // allBeers = jsonData.map(prepareObject);
-  // console.log(allBeers);
-
-  const beertap = Object.create(Beertap);
-  console.log(beertap);
-  console.log(jsonData);
-  console.log(jsonData.bar);
-  console.log(jsonData.bar.name);
-
-  // beertap.namebeer = jsonData.taps.beer;
-  displayBeerTap(beertap);
-  let arr = jsonData.taps;
-  // let iterator = arr.values();
-  // for
-
-  arr.forEach((tap) => {
-    console.log(tap);
-    // tap.forEach((atap) => {
-    //   beertap.namebeer = atap.beer;
-    // });
-    // beertap.namebeer = tap.beer;
-    // beertap.dot = tap.beer;
-
-    // document.querySelector(".tap .namebeer").textContent = tap.beer;
-    // document.querySelectorAll(".tap .namebeer").forEach((name) => {
-    //   console.log(name);
-    //   name.innerHTML = tap.beer;
-  });
-  // });
-  // document.querySelectorAll(".namebeer").forEach((tapbeer) => {
-  //   console.log(tapbeer);
-  //   let taps = jsonData.taps;
-  //   tapbeer.innerHTML = jsonData.taps.forEach((tap) => tap.beer);
-  // });
-  // jsonData.forEach((elem) => {
-  //   console.log(elem);
-  // });
+  // console.log(jsonData);
+  // console.log(jsonData.bar);
+  // console.log(jsonData.bar.name);
+  showBeerTap(jsonData.taps);
+  showQueue(jsonData.queue);
+  showStorage(jsonData.storage);
+  showTask(jsonData.serving);
+  // showBartender(jsonData.bartenders);
 }
-// function prepareObject(jsonObject) {}
+
+function showBeerTap(taps) {
+  const template = document.querySelector(".tapBeerTemplate").content;
+  taps.forEach((tap) => {
+    const copy = template.cloneNode(true);
+    copy.querySelector(".namebeer").textContent = tap.beer;
+    document.querySelector(".bottomtaps").appendChild(copy);
+  });
+}
+
+//NEXT IN QUEUE
+function showQueue(peopleQueue) {
+  // console.log(peopleQueue);
+  const template = document.querySelector(".nextInQueueTemplate").content;
+  peopleQueue.forEach((person) => {
+    const copy = template.cloneNode(true);
+    // console.log(person);
+    copy.querySelector(".length").textContent = person.order.length;
+    copy.querySelector(".orderId span").textContent = person.id;
+    document.querySelector(".people-queue").appendChild(copy);
+  });
+}
+
+//STORAGE
+function showStorage(storage) {
+  // console.log(storage);
+  const template = document.querySelector(".storageTemplate").content;
+  storage.forEach((beer) => {
+    // console.log(beer);
+    const copy = template.cloneNode(true);
+    copy.querySelector(".namebeer").textContent = beer.name;
+    copy.querySelector(".amountbeer").textContent = `x${beer.amount}`;
+    document.querySelector(".storageitems ul").appendChild(copy);
+  });
+}
+
+//BARTENDER
+
+// function showBartender(bartender){
+// const currentBart = document.querySelector(".name2").textContent = bartender.name;
+// console.log(bartender.name);
+//    const nameBartender2 = document.querySelector(".name2")
+// nameBartender2 = bartender.name;
+// const nameValue2 = document.getElementById("Username").value;
+// nameBartender2.innerHTML = nameValue2;
+//   const template = document.querySelector(".bartender2").content;
+//     const clone = template.cloneNode(true);
+//     clone.querySelector(".name2").textContent=employee.name;
+//      const nameValue2 = document.getElementById("Username").value;
+//     nameBartender2.innerHTML = employee.name;
+//     document.querySelector(".bartender").appendChild(clone);
+
+// }
+
+//TASK
+
+function showTask(serving) {
+  console.log(serving);
+  const template = document.querySelector(".task").content;
+  serving.forEach((order) => {
+    console.log(order);
+    const clone = template.cloneNode(true);
+    clone.querySelector(".subheading2 span").textContent = `#${order.id}`;
+
+    // clone.querySelector(".amount3").textContent = order.order.length;
+    clone.querySelector(".name3").textContent = " " + order.order;
+
+    document.querySelector(".orderList").appendChild(clone);
+  });
+}
+
+//LOG OUT
+
+document.querySelector(".logout").addEventListener("click", reset);
+function reset() {
+  location.reload();
+}
 //form
 
 const form = document.querySelector(".login-form");
@@ -63,8 +111,9 @@ const message = document.getElementById("message");
 const messages = document.querySelectorAll(".message");
 const button = document.querySelector(".form-submit-btn");
 const header = document.querySelector("header");
+let darkmode = false;
 
-header.style.visibility = "hidden";
+header.style.display = "none";
 
 const error = (input, message) => {
   input.nextElementSibling.classList.add("error");
@@ -126,24 +175,28 @@ form.addEventListener("submit", (e) => {
 function init() {
   const nameBartender = document.querySelector(".name");
   const nameValue = document.getElementById("Username").value;
-  nameBartender.innerHTML = nameValue.trim();
+  nameBartender.innerHTML = nameValue;
   const screen1 = document.querySelector(".screen1");
   const loader = document.querySelector(".loader");
   const main = document.querySelector(".main");
-  const logo2 = document.querySelector(".logo2");
   const header = document.querySelector("header");
   const body = document.querySelector("body");
+  const logo2 = document.querySelector(".logo2 img");
   screen1.style.display = "none";
-
+  logo2.style.display = "flex";
+  logo2.style.visibility = "visible";
   loader.style.display = "flex";
   loader.style.visibility = "visible";
   body.style.borderLeft = "0";
 
   setTimeout(() => {
+    const nameBartender2 = document.querySelector(".name2");
+    const nameValue2 = document.getElementById("Username").value;
+    nameBartender2.innerHTML = nameValue2;
     loader.style.display = "none";
     loader.style.visibility = "hidden";
     main.style.display = "grid";
-    header.style.visibility = "visible";
+    header.style.display = "flex";
     document.querySelector("body").style.borderLeft = "none";
   }, 3000);
 }
@@ -209,9 +262,33 @@ function init() {
 //   createBubbles(60, 100);
 // });
 //DARK MODE
-let darkmode = false;
 
 const modeSwitch = document.querySelector(".switch");
+const switchDark = document.querySelector(".screen1 .switch");
+
+switchDark.onclick = function () {
+  if (darkmode === false) {
+    darkmode = true;
+    document.querySelector("body").classList.add("dark");
+    document.querySelector("body").style.borderLeft = "7vw solid #849478";
+    document.querySelector(".screen1").classList.add("dark");
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
+
+    document.querySelector(".loader").classList.add("dark");
+    document.querySelector(".logo2 img").src = "assets/logo-yellow.png";
+  } else {
+    darkmode = false;
+    document.querySelector("body").classList.remove("dark");
+    document.querySelector("body").style.borderLeft = "7vw solid #fcce72";
+    document.querySelector(".screen1").classList.remove("dark");
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch.png";
+    document.querySelector(".logo3 img").src = "assets/logo-green.png";
+
+    document.querySelector(".loader").classList.remove("dark");
+    document.querySelector(".logo2 img").src = "assets/logo-green.png";
+  }
+};
 
 modeSwitch.onclick = function () {
   if (darkmode == false) {
@@ -221,14 +298,20 @@ modeSwitch.onclick = function () {
     document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
-    console.log(document.querySelectorAll(".next-icon"));
-    document.querySelectorAll(".next-icon").src = "assets/next_yellow.png";
+    document.querySelectorAll(".next-icon").forEach((element) => {
+      element.src = "assets/next_yellow.png";
+    });
+    document.querySelector(".exit img").src = "assets/exit_white.png";
   } else {
     darkmode = false;
     document.querySelector("body").classList.remove("dark");
     document.querySelector(".bartender-img").src = "assets/bartender-green.png";
     document.querySelector(".switch").src = "assets/FooBar-switch.png";
     document.querySelector(".logo").src = "assets/logo-green.png";
+    document.querySelectorAll(".next-icon").forEach((element) => {
+      element.src = "assets/next_light-green.png";
+    });
+    document.querySelector(".exit img").src = "assets/exit_grey.png";
   }
 };
 

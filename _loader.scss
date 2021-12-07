@@ -24,16 +24,21 @@
   padding-top: 10vw;
   box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
   border-radius: 9px;
-  background-image: url(assets/beer-liquid.png);
+  background-image: url(assets/beer-liquid.jpg);
+  background-repeat: no-repeat;
+background-size: cover;
   // opacity: 52%;
   position: relative;
   animation: fade-out 3s 1 linear;
 }
-
-.logo2 img {
+.logo2{
   visibility: hidden;
   display: none;
 }
+// .logo2 img {
+//   visibility: hidden;
+//   display: none;
+// }
 .hi,
 .shift {
   font-family: variables.$regular;
@@ -44,6 +49,7 @@
   z-index: 3;
  
 }
+
 
 @keyframes fade-out {
   100% {
@@ -79,12 +85,14 @@
     animation: fade-out 3s 1 linear;
   }
 
-  .logo2 i {
+  .logo2 {
     visibility: visible;
     display: flex;
+    justify-content: center;
     margin-top: 0;
   }
   .logo2 img {
+
     margin-top: 0;
     height: 9vh;
     width: auto;

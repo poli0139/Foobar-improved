@@ -20,16 +20,22 @@ body {
   margin: 5px;
   height: 10vh;
 }
-.switch2  {
-  width: 6rem;
-  height: fit-content;
-  float: right;
-  margin-top: -10vh;
-
+.screen1 {
+  .switch {
+    float: right;
+  }
 }
-
+.logo2 {
+  visibility: hidden;
+  display: none;
+}
+.logo2 img {
+  visibility: hidden;
+  display: none;
+}
 .logo3 {
   text-align: center;
+  padding-top: 3vw;
 }
 .logo3 img {
   height: 27vh;
@@ -121,23 +127,29 @@ label {
     height: auto;
     margin-top: 9vw;
   }
+
   label {
     font-size: 5vw;
   }
-.switch2{
-  visibility: hidden;
-}
+  .switch {
+    visibility: hidden;
+  }
   .login-form-input {
     width: 20rem;
+    
+
   }
   .login-form {
     margin-top: 20vw;
+    display: flex;
+    justify-content: center;
   }
 
   .form-submit-btn {
     width: 4rem;
     border-top: 3.5px solid variables.$dark-grey;
     font-size: 4vw;
+
   }
   .comment {
     font-family: variables.$regular;
@@ -149,9 +161,6 @@ label {
     width: 87vw;
     text-align: left;
   }
-  // .logo2 img {
-  //   display:none;
-  //   visibility: hidden;
-  // }
+
 }
 //end of form

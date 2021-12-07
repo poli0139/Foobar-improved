@@ -37,6 +37,7 @@
         color: variables.$dark-grey;
       }
     }
+
   }
   .order ul,
   .storageitems {
@@ -54,7 +55,7 @@
   ul li,
   .namebeer,
   p,
-  .name,
+  .name2,
   .done-btn,
   header h1 {
     color: variables.$background-light;
@@ -70,5 +71,55 @@
   }
   .logout {
     border-top: solid variables.$yellow 2px;
+  }
+  label{
+    color:variables.$background-light;
+  }
+  .comment{
+    color: variables.$background-light;
+    opacity: 50%;
+  }
+  body {
+    border-left: 7vw solid;
+    border-left-color: variables.$dark-green;
+  }
+  .form-submit-btn{
+    color:variables.$background-light;
+    border-top: 3.5px solid variables.$background-light;
+
+  }
+  .hi, .shift{
+    color: variables.$background-light;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .dark {
+    .yourTask,
+    .nextInQueue,
+    .taps,
+    .storage {
+      background-color: transparent;
+    }
+    .order {
+      background-color: variables.$light-grey;
+    }
+    .nextInQueue {
+      border-bottom: solid variables.$yellow 3px;
+    }
+    .legend p {
+      color: variables.$background-light;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .dark{
+    .loader, .welcome{
+      background-color: variables.$dark-grey;
+      .hi, .shift{
+        color:variables.$background-light;
+      }
+      
+    }
   }
 }
