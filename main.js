@@ -1,4 +1,4 @@
-"use stict;";
+"use strict";
 // fetching data
 window.addEventListener("DOMContentLoaded", loadJSON);
 
@@ -9,17 +9,32 @@ function loadJSON() {
       // when loaded, prepare objects
       prepareObjects(jsonData);
     });
-}
+  }
+
+
 function prepareObjects(jsonData) {
+  //   let  obj1 = jsonData.serving;
+  // let obj2 = jsonData.bartenders;
+  // console.log(obj1);
+  // console.log(obj2);
+  // let merged = obj1.concat(obj2);
+  //   console.log(merged);
   // console.log(jsonData);
   // console.log(jsonData.bar);
   // console.log(jsonData.bar.name);
+  // showTime(jsonData.timestamp);
+  // console.log(jsonData.timestamp);
   showBeerTap(jsonData.taps);
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
   showTask(jsonData.serving);
-  // showBartender(jsonData.bartenders);
+  
+  const hour2 = new Date(jsonData.timestamp).getHours();
+      const minutes2 = new Date(jsonData.timestamp).getMinutes();
+      document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
 }
+
+
 
 function showBeerTap(taps) {
   const template = document.querySelector(".tapBeerTemplate").content;
@@ -35,10 +50,17 @@ function showQueue(peopleQueue) {
   // console.log(peopleQueue);
   const template = document.querySelector(".nextInQueueTemplate").content;
   peopleQueue.forEach((person) => {
+ 
     const copy = template.cloneNode(true);
+    const hour = new Date(person.startTime).getHours();
+    const minutes = new Date(person.startTime).getMinutes();
+
+
+
     // console.log(person);
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
+  copy.querySelector(".orderTime").textContent = hour + ":" + minutes;
     document.querySelector(".people-queue").appendChild(copy);
   });
 }
@@ -58,39 +80,87 @@ function showStorage(storage) {
 
 //BARTENDER
 
-// function showBartender(bartender){
+// function showBartender(bartender) {
 // const currentBart = document.querySelector(".name2").textContent = bartender.name;
-// console.log(bartender.name);
+// console.log(bartender);
 //    const nameBartender2 = document.querySelector(".name2")
 // nameBartender2 = bartender.name;
 // const nameValue2 = document.getElementById("Username").value;
 // nameBartender2.innerHTML = nameValue2;
-//   const template = document.querySelector(".bartender2").content;
-//     const clone = template.cloneNode(true);
+// bartender.forEach((employee) => {
+//   if (employee.name === document.getElementById("Username").value) {
+//     console.log(document.getElementById("Username").value);
+// const template = document.querySelector("template.bartender").content;
+
+// const clone = template.cloneNode(true);
+// clone.querySelector(".name2").textContent = employee.name;
+// document.querySelector(".bartenderinfo").appendChild(clone);
+// console.log(employee.name);
+// }
+// showTask(employee.name);
+// });
 //     clone.querySelector(".name2").textContent=employee.name;
 //      const nameValue2 = document.getElementById("Username").value;
 //     nameBartender2.innerHTML = employee.name;
-//     document.querySelector(".bartender").appendChild(clone);
-
-
 // }
 
 //TASK
 
-function showTask(serving){
-  console.log(serving);
+function showTask(serving) {
   const template = document.querySelector(".task").content;
-  serving.forEach((order)=>{
-    console.log(order);
+
+  serving.forEach((order) => {
     const clone = template.cloneNode(true);
-    clone.querySelector(".subheading2 span").textContent = `#${order.id}`;
-
-    // clone.querySelector(".amount3").textContent = order.order.length;
-    clone.querySelector(".name3").textContent =  " " + order.order;
-
+    clone.querySelector(".orderId").textContent = `#${order.id}`;
+    clone.querySelector(".singleOrder span").textContent = order.order.length;
+    clone.querySelector(".name3").textContent = order.order;
     document.querySelector(".orderList").appendChild(clone);
-  })
+  });
+
+  // }
+  // function hasbartenders(bartenders) {
+  //   console.log(bartenders);
+  //   // console.log(bartenders[0].name);
+  //   // const bartenders
+  // return bartenders[0].name;
+
+  // if (bartenders[0].name === bartender)
+  // console.log(bartenders[0].name);
+  // bartenders.forEach((bartender) => {
+  //   console.log(`I am ${bartender} from data`);
+
+  // showTask(bartender);
 }
+//   let bartenderdata = hasbartenders();
+//   console.log(bartenderdata);
+// function showTask(bartender) {
+//   console.log(`i am ${bartender} from input`);
+
+//   return bartender;
+
+//   }
+
+//   function comparingbartenders(bartenderdata) {
+//     const bartenderfromdata = bartenderdata.forEach((abartender)=> {
+//       console.log(abartender[0]);
+//     })
+//     console.log(bartenderfromdata);
+//   }
+// const template = document.querySelector(".task").content;
+// serving.forEach((order)=>{
+// console.log(order);
+// const clone = template.cloneNode(true);
+// clone.querySelector(".subheading2 span").textContent = `#${order.id}`;
+// if (bartender.name === "Jonas") {
+//   console.log(bartender.name);
+//   clone.querySelector(".subheading2 span").textContent = `#${bartender.servingCustomer}`;
+//   console.log(bartender.servingCustomer);
+// }
+// clone.querySelector(".amount3").textContent = order.order.length;
+// clone.querySelector(".name3").textContent =  " " + order.order;
+
+// document.querySelector(".orderList").appendChild(clone);
+// }
 
 //LOG OUT
 
@@ -136,7 +206,21 @@ const checkLength = (input, min) => {
 
 const checkName = (input) => {
   if (input.value === "Jonas") {
-    2;
+    // const template = document.querySelector("template.bartender").content;
+
+    // const clone = template.cloneNode(true);
+    // clone.querySelector(".name2").textContent = input.value;
+    // document.querySelector(".bartenderinfo").appendChild(clone);
+    // console.log(input.value);
+
+    // clone.querySelector(".name2").textContent = input.value;
+    // showTask(input.value);
+    // input.value = jsonData.bartenders.name;
+    // const template = document.querySelector(".task").content;
+    // const clone = template.cloneNode(true);
+    // clone.querySelector(".subheading2 span").textContent = `#${bartender.servingCustomer}`;
+    // console.log(bartender.servingCustomer);
+    // document.querySelector(".orderList").appendChild(clone);
     succes(input);
     init();
     // window.location.href="index.html";
@@ -179,12 +263,11 @@ function init() {
   const body = document.querySelector("body");
   const logo2 = document.querySelector(".logo2 img");
   screen1.style.display = "none";
-logo2.style.display = "flex";
-logo2.style.visibility="visible"
+  logo2.style.display = "flex";
+  logo2.style.visibility = "visible";
   loader.style.display = "flex";
   loader.style.visibility = "visible";
   body.style.borderLeft = "0";
- 
 
   setTimeout(() => {
     const nameBartender2 = document.querySelector(".name2");
@@ -264,9 +347,9 @@ window.addEventListener("DOMContentLoaded", () => {
 const modeSwitch = document.querySelector(".switch");
 const switchDark = document.querySelector(".screen1 .switch");
 
-switchDark.onclick = function (){
-  if(darkmode === false){
-    darkmode= true;
+switchDark.onclick = function () {
+  if (darkmode === false) {
+    darkmode = true;
     document.querySelector("body").classList.add("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #849478";
     document.querySelector(".screen1").classList.add("dark");
@@ -274,9 +357,8 @@ switchDark.onclick = function (){
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
 
     document.querySelector(".loader").classList.add("dark");
-    document.querySelector(".logo2 img").src="assets/logo-yellow.png"
-
-  }else{
+    document.querySelector(".logo2 img").src = "assets/logo-yellow.png";
+  } else {
     darkmode = false;
     document.querySelector("body").classList.remove("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #fcce72";
@@ -285,18 +367,16 @@ switchDark.onclick = function (){
     document.querySelector(".logo3 img").src = "assets/logo-green.png";
 
     document.querySelector(".loader").classList.remove("dark");
-    document.querySelector(".logo2 img").src="assets/logo-green.png"
-
+    document.querySelector(".logo2 img").src = "assets/logo-green.png";
   }
-}
+};
 
 modeSwitch.onclick = function () {
   if (darkmode == false) {
     darkmode = true;
     console.log(darkmode);
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src =
-      "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
