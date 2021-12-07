@@ -262,6 +262,30 @@ window.addEventListener("DOMContentLoaded", () => {
 //DARK MODE
 
 const modeSwitch = document.querySelector(".switch");
+const switchDark = document.querySelector(".screen1 .switch");
+
+switchDark.onclick = function (){
+  if(darkmode === false){
+    darkmode= true;
+    document.querySelector("body").classList.add("dark");
+    document.querySelector("body").style.borderLeft = "7vw solid #849478";
+    document.querySelector(".screen1").classList.add("dark");
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
+
+    document.querySelector(".loader").classList.add("dark");
+    document.querySelector(".logo2 img").src="assets/logo-yellow.png"
+
+  }else{
+    darkmode = false;
+    document.querySelector("body").classList.remove("dark");
+    document.querySelector("body").style.borderLeft = "7vw solid #fcce72";
+    document.querySelector(".screen1").classList.remove("dark");
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch.png";
+    document.querySelector(".logo3 img").src = "assets/logo-green.png";
+
+  }
+}
 
 modeSwitch.onclick = function () {
   if (darkmode == false) {
