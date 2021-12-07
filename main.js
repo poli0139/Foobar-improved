@@ -284,6 +284,9 @@ switchDark.onclick = function (){
     document.querySelector(".screen1 .switch").src = "assets/FooBar-switch.png";
     document.querySelector(".logo3 img").src = "assets/logo-green.png";
 
+    document.querySelector(".loader").classList.remove("dark");
+    document.querySelector(".logo2 img").src="assets/logo-green.png"
+
   }
 }
 
