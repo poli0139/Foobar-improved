@@ -31,11 +31,14 @@ background-size: cover;
   position: relative;
   animation: fade-out 3s 1 linear;
 }
-
-.logo2 img {
+.logo2{
   visibility: hidden;
   display: none;
 }
+// .logo2 img {
+//   visibility: hidden;
+//   display: none;
+// }
 .hi,
 .shift {
   font-family: variables.$regular;
@@ -85,6 +88,7 @@ background-size: cover;
   .logo2 {
     visibility: visible;
     display: flex;
+    justify-content: center;
     margin-top: 0;
   }
   .logo2 img {
