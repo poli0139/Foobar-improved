@@ -105,7 +105,6 @@ function loadJSON() {
 
 //refresh data
 
-// function refresh(){
 //   const screen1 = document.querySelector(".screen1");
 //   const loader = document.querySelector(".loader");
 //   const main = document.querySelector(".main");
@@ -130,7 +129,7 @@ function prepareObjects(jsonData) {
 //dipaly data
 function convertTime(time) {
   const hour2 = new Date(time).getHours();
-  const minutes2 = new Date(time).getMinutes();
+  const minutes2 = new Date(time).getMinutes().toString().padStart(2, "0");
   document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
 }
 
@@ -215,7 +214,7 @@ function showQueue(peopleQueue) {
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
-    const minutes = new Date(person.startTime).getMinutes();
+    const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0");
 
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
@@ -244,7 +243,7 @@ function showTask(dataBase) {
   const container = document.querySelector(".task");
   const container2 = document.querySelector(".time-button");
   const hour3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getHours();
-  const minute3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getMinutes();
+  const minute3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getMinutes().toString().padStart(2, "0");
 
   container.querySelector(".subheading2 span").textContent = " " + `#${servings.filter((x) => x.id === OrderToDo)[0].id}`;
   container.querySelector(".name3").textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
