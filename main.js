@@ -2,6 +2,13 @@
 // fetching data
 window.addEventListener("DOMContentLoaded", form);
 let darkmode = false;
+let allOrders = [];
+const Order = {
+  name: "",
+  servingCustomer: "",
+  startTime: 0,
+  order: "",
+};
 
 //form
 function form() {
@@ -37,7 +44,7 @@ function form() {
       succes(input);
     }
   };
-
+  // input.value === "Jonas" === bartdern[3]
   const checkName = (input) => {
     if (input.value === "Jonas") {
       succes(input);
@@ -103,37 +110,91 @@ function init() {
   loadJSON();
 }
 //end of loading animation
-
 function loadJSON() {
   fetch("https://foobarpm.herokuapp.com/")
     .then((response) => response.json())
     .then((jsonData) => {
       // when loaded, prepare objects
       prepareObjects(jsonData);
+
+      // refresh();
     });
 }
 
+// function refresh(){
+//   const screen1 = document.querySelector(".screen1");
+//   const loader = document.querySelector(".loader");
+//   const main = document.querySelector(".main");
+
+// setTimeout(function(){
+//   location.reload(1);
+//   loader.style.display = "none";
+//   loader.style.visibility = "hidden";
+//   main.style.display = "grid";
+// }, 10000)};
+
 function prepareObjects(jsonData) {
+  // const json = Object.values(jsonData);
+  // const obj1 = json[3];
+  // const obj2 = json[4];
+
+  // const obj3 = Object.assign(obj1, obj2);
+
+  // console.log(obj3);
+
+  // console.log(json);
+  // console.log(json[2]);
+  // const objectfromarray = json[2].map((obj) => {
+  //   console.log(obj);
+  // });
+
+  // console.log(objectfromarray);
+
   showBeerTap(jsonData.taps);
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
   showTask(jsonData);
-  // showBartender(jsonData.bartenders);
+  allOrders = json[2].map(prepareOrder);
+  console.log(allOrders);
+  displayList(allOrders);
   const hour2 = new Date(jsonData.timestamp).getHours();
   const minutes2 = new Date(jsonData.timestamp).getMinutes();
   document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
 }
-//BEER TAPS
+
+function prepareOrder(elem) {
+  console.log(elem);
+  const order = Object.create(Order);
+  // const bartenders = elem[1];
+  // const name5 = bartenders.name;
+  // console.log(bartenders);
+  // order.name = elem.order;
+  // console.log(order.name);
+  // order.servingCustomer = elem.servingCustomer;
+  order.order = elem.order;
+  console.log(order.order);
+
+  return order;
+}
+function displayList(orders) {
+  document.querySelector(".orderList").innerHTML = "";
+
+  orders.forEach(displayOrder);
+}
+
+function displayOrder(order) {
+  console.log(order);
+  const clone = document.querySelector(".task").content.cloneNode(true);
+  clone.querySelector(".orderId").textContent = order.order;
+  document.querySelector(".orderList").appendChild(clone);
+}
 
 //BEER TAPS
 function showBeerTap(taps) {
   const template = document.querySelector(".tapBeerTemplate").content;
   taps.forEach((tap) => {
-    console.log(tap);
-    console.log(tap.capacity);
-    console.log(tap.level);
     let percentage = (tap.level * 100) / tap.capacity + "%";
-    console.log(percentage);
+
     const copy = template.cloneNode(true);
     copy.querySelector(".namebeer").textContent = tap.beer;
     let fill = copy.querySelector(".progress-fill");
@@ -149,16 +210,6 @@ function showBeerTap(taps) {
     }
     filltext.textContent = percentage;
     // fill.style.height = percentage;
-    console.log(fill);
-
-    //Delete if works
-    // const mqLarge = window.matchMedia("(min-width:800px)");
-    // console.log(mqLarge);
-    // mqLarge.addEventListener("change", mqHandler);
-    // function mqHandler(e) {
-    //   console.log(e.matches ? "large" : "not large");
-    // }
-    // mqHandler(mqLarge);
 
     const screen = {
       small: window.matchMedia("(min-width: 400px)"),
@@ -177,49 +228,23 @@ function showBeerTap(taps) {
 
       console.log(size);
       if (size === "large") {
-        console.log("it is large");
+        // console.log("it is large");
         fill.style.height = percentage;
         fill.style.width = "100%";
       } else if (size === "medium") {
         fill.style.height = percentage;
         fill.style.width = "100%";
-        console.log("it is medium");
       } else {
-        console.log("it is small");
         fill.style.width = percentage;
         fill.style.height = "100%";
       }
     }
 
-    //Delete if works
-    // let x = window.matchMedia("(max-width: 575px)");
-
-    // function checkmedia(x) {
-    //   if (x.matches) {
-    //     console.log("it is narrow");
-    //     fill.style.width = percentage;
-    //   } else {
-    //     console.log("it is large");
-    //     fill.style.height = percentage;
-    //   }
-    // }
-    // checkmedia(x);
-
-    // x.addEventListener("change", function (event) {
-    //   checkmedia(event.target);
-    // });
-    // window.addEventListener("DOMContentLoaded", checkmedia(x));
-
-    // document.querySelector(".tap .progressfill").style.width = percentage;
-
     const mobileView = window.matchMedia("(max-width: 575px)");
     if (mobileView.matches) {
-      console.log("I am the mobile view");
       fill.style.width = percentage;
       fill.style.height = "100%";
     } else {
-      console.log("I am the desktop view");
-
       fill.style.height = percentage;
       fill.style.width = "100%";
     }
@@ -243,14 +268,12 @@ function showBeerTap(taps) {
 
 //NEXT IN QUEUE
 function showQueue(peopleQueue) {
-  // console.log(peopleQueue);
   const template = document.querySelector(".nextInQueueTemplate").content;
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
     const minutes = new Date(person.startTime).getMinutes();
 
-    // console.log(person);
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
     copy.querySelector(".orderTime").textContent = hour + ":" + minutes;
@@ -260,10 +283,8 @@ function showQueue(peopleQueue) {
 
 //STORAGE
 function showStorage(storage) {
-  // console.log(storage);
   const template = document.querySelector(".storageTemplate").content;
   storage.forEach((beer) => {
-    // console.log(beer);
     const copy = template.cloneNode(true);
     copy.querySelector(".namebeer").textContent = beer.name;
     copy.querySelector(".amountbeer").textContent = `x${beer.amount}`;
@@ -273,7 +294,7 @@ function showStorage(storage) {
 
 //TASK
 function showTask(data) {
-  // console.log(serving)
+
   let servingdata = data.serving;
   let bartendersdata = data.bartenders;
 
@@ -286,17 +307,17 @@ function showTask(data) {
     clone.querySelector(".orderId").textContent = `#${order.id}`;
     clone.querySelector(".singleOrder span").textContent = order.order.length;
     clone.querySelector(".name3").textContent = order.order;
-    clone.querySelector("#bartenderName").textContent = bartendersdata.name;
+//     clone.querySelector("#bartenderName").textContent = bartendersdata.name;
 
-    document.querySelector(".orderList").appendChild(clone);
-  });
+//     document.querySelector(".orderList").appendChild(clone);
+//   });
 
-  const template2 = document.querySelector(".task").content;
+//   const template2 = document.querySelector(".task").content;
 
-  bartendersdata.forEach((bartender) => {
-    console.log(bartender);
-    const clone = template2.cloneNode(true);
-    clone.querySelector("#bartenderName").textContent = bartender.name;
+//   bartendersdata.forEach((bartender) => {
+//     console.log(bartender);
+//     const clone = template2.cloneNode(true);
+//     clone.querySelector("#bartenderName").textContent = bartender.name;
     document.querySelector(".orderList").appendChild(clone);
   });
 }
