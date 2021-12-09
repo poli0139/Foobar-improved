@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/assets/logo-green.png" type="image/icon type">
+    <link rel="icon" href="/assets/logo-green.png" type="image/icon type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.scss" />
     <title>FooBar</title>
@@ -16,19 +16,19 @@
         <img src="assets/logo-green.png" alt="logo" />
       </div>
       <p class="hi">Hi, &nbsp; <span class="name"></span></p>
-      <br/>
+      <br />
       <p class="shift">Have a nice shift!</p>
     </div>
- 
   </div>
 
   <!--end of loading animation-->
 
-
   <body>
     <header>
       <img class="logo" src="assets/logo-green.png" alt="logo" />
+
       <h1>19:30</h1>
+
       <img class="switch" src="assets/FooBar-switch.png" alt="mode-switch" />
     </header>
 
@@ -73,13 +73,14 @@
     <main class="main">
       <section class="bartender">
         <img class="bartender-img" src="assets/bartender-green.png" alt="" />
+
         <div class="bartenderinfo">
-          
+          <!-- <template class="bartender"> -->
           <h1 class="name2">PETER</h1>
-          <div>
-            <p>Your shift</p>
-            <p>17:00-01:00</p>
-          </div>
+          <!-- </template> -->
+
+          <p>Your shift</p>
+          <p>17:00-01:00</p>
         </div>
         <button class="button logout">LOG OUT</button>
         <button class="exit"><img src="assets/exit_grey.png" /></button>
@@ -100,7 +101,7 @@
           <div class="bottomtaps"></div>
           <template class="tapBeerTemplate">
             <div class="tap">
-              <div class="reddot"></div>
+              <div class="dot"></div>
               <div class="progress">
                 <span class="progress-text">25%</span>
 
@@ -129,39 +130,13 @@
       <section class="yourTask">
         <h1 class="section-heading">Your task</h1>
         <div class="order">
-          <div class="orderList"></div>
-
-            <template class ="task">
-            <h2 class="subheading2">Order <span class="orderId">#112</span></h2>
+          <div class="task">
+            <h2 class="subheading2">Order #<span class="orderId"></span></h2>
             <ul class="singleOrder">
-              <li >
-                <!-- <span class="amount3">1</span> x -->
-                <li class="name3">Ruined Childhood</li>
-              </li>
+              <li class="name3"></li>
             </ul>
-            </template>
-              <!-- <li class="singleOrder">
-                <span class="amount">2</span> x
-                <span class="name">Row 26</span>
-              </li>
-              <li class="singleOrder">
-                <span class="amount">5</span> x
-                <span class="name">Steampunk</span>
-              </li>
-              <li class="singleOrder">
-                <span class="amount">1</span> x
-                <span class="name">Ruined Childhood</span>
-              </li>
-              <li class="singleOrder">
-                <span class="amount">2</span> x
-                <span class="name">Row 26</span>
-              </li>
-              <li class="singleOrder">
-                <span class="amount">5</span> x
-                <span class="name">Steampunk</span>
-              </li>
-            </ul>
-          </div> -->
+          </div>
+
           <div class="time-button">
             <p class="order-time">19:25</p>
             <button class="button done-btn">Done</button>
@@ -170,48 +145,7 @@
 
         <div class="nextInQueue">
           <h1 class="section-heading">next in queue</h1>
-          <div class="people-queue">
-            <!-- <div class="singlePerson">
-              <p class="length">1</p>
-              <img
-                class="next-icon"
-                src="assets/next_light-green.png"
-                alt="next-in-queue"
-              />
-              <p class="orderId">#112</p>
-              <p class="orderTime">19:27</p>
-            </div>
-            <div class="singlePerson">
-              <p class="length">1</p>
-              <img
-                class="next-icon"
-                src="assets/next_light-green.png"
-                alt="next-in-queue"
-              />
-              <p class="orderId">#112</p>
-              <p class="orderTime">19:27</p>
-            </div>
-            <div class="singlePerson">
-              <p class="length">1</p>
-              <img
-                class="next-icon"
-                src="assets/next_light-green.png"
-                alt="next-in-queue"
-              />
-              <p class="orderId">#112</p>
-              <p class="orderTime">19:27</p>
-            </div>
-            <div class="singlePerson">
-              <p class="length">1</p>
-              <img
-                class="next-icon"
-                src="assets/next_light-green.png"
-                alt="next-in-queue"
-              />
-              <p class="orderId">#112</p>
-              <p class="orderTime">19:27</p>
-            </div> -->
-          </div>
+          <div class="people-queue"></div>
           <template class="nextInQueueTemplate">
             <div class="singlePerson">
               <p class="length"></p>

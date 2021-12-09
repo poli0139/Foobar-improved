@@ -1,195 +1,72 @@
-"use stict;";
+"use strict";
 // fetching data
-window.addEventListener("DOMContentLoaded", loadJSON);
-// let allBeers = [];
-const Beertap = {
-  dot: "",
-  percentageText: "",
-  namebeer: "",
-};
-function loadJSON() {
-  fetch("https://foobarpm.herokuapp.com/")
-    .then((response) => response.json())
-    .then((jsonData) => {
-      // when loaded, prepare objects
-      prepareObjects(jsonData);
-    });
-}
-function prepareObjects(jsonData) {
-  // console.log(jsonData);
-  // console.log(jsonData.bar);
-  // console.log(jsonData.bar.name);
-  showBeerTap(jsonData.taps);
-  showQueue(jsonData.queue);
-  showStorage(jsonData.storage);
-  showTask(jsonData);
-  // showBartender(jsonData.bartenders);
-}
-
-function showBeerTap(taps) {
-  const template = document.querySelector(".tapBeerTemplate").content;
-  taps.forEach((tap) => {
-    const copy = template.cloneNode(true);
-    copy.querySelector(".namebeer").textContent = tap.beer;
-    document.querySelector(".bottomtaps").appendChild(copy);
-  });
-}
-
-//NEXT IN QUEUE
-function showQueue(peopleQueue) {
-  // console.log(peopleQueue);
-  const template = document.querySelector(".nextInQueueTemplate").content;
-  peopleQueue.forEach((person) => {
-    const copy = template.cloneNode(true);
-    // console.log(person);
-    copy.querySelector(".length").textContent = person.order.length;
-    copy.querySelector(".orderId span").textContent = person.id;
-    document.querySelector(".people-queue").appendChild(copy);
-  });
-}
-
-//STORAGE
-function showStorage(storage) {
-  // console.log(storage);
-  const template = document.querySelector(".storageTemplate").content;
-  storage.forEach((beer) => {
-    // console.log(beer);
-    const copy = template.cloneNode(true);
-    copy.querySelector(".namebeer").textContent = beer.name;
-    copy.querySelector(".amountbeer").textContent = `x${beer.amount}`;
-    document.querySelector(".storageitems ul").appendChild(copy);
-  });
-}
-
-//BARTENDER
-
-// function showBartender(bartender){
-// const currentBart = document.querySelector(".name2").textContent = bartender.name;
-// console.log(bartender.name);
-//    const nameBartender2 = document.querySelector(".name2")
-// nameBartender2 = bartender.name;
-// const nameValue2 = document.getElementById("Username").value;
-// nameBartender2.innerHTML = nameValue2;
-//   const template = document.querySelector(".bartender2").content;
-//     const clone = template.cloneNode(true);
-//     clone.querySelector(".name2").textContent=employee.name;
-//      const nameValue2 = document.getElementById("Username").value;
-//     nameBartender2.innerHTML = employee.name;
-//     document.querySelector(".bartender").appendChild(clone);
-
-// }
-
-//TASK
-
-function showTask(dataBase) {
-  const servings = dataBase.serving;
-  console.log(servings);
-  const bartenderOrder = dataBase.bartenders;
-  console.log(bartenderOrder);
-  const jonasOrder = bartenderOrder[2].servingCustomer;
-  console.log(`Jonas is doing ${jonasOrder}`);
-
-  const template = document.querySelector(".task").content;
-  console.log(servings.filter((x) => x.id === jonasOrder));
-
-  const clone = template.cloneNode(true);
-  clone.querySelector(".subheading2 span").textContent = `#${
-    servings.filter((x) => x.id === jonasOrder)[0].id
-  }`;
-
-  // clone.querySelector(".amount3").textContent = order.order.length;
-  // servings
-  //   .filter((x) => x.id === jonasOrder)[0]
-  //   .order.forEach(() => {
-  //     const newItem = document.createElement("li");
-  //     newItem.setAttribute.class = servings.filter(
-  //       (x) => x.id === jonasOrder
-  //     )[0].id;
-  //     newItem.textContent = servings.filter(
-  //       (x) => x.id === jonasOrder
-  //     )[0].order;
-  //     document.querySelector(".task ul").appendChild(newItem);
-  //   });
-
-  clone.querySelector(".name3").textContent = servings.filter(
-    (x) => x.id === jonasOrder
-  )[0].order;
-
-  document.querySelector(".orderList").appendChild(clone);
-}
-
-//LOG OUT
-
-document.querySelector(".logout").addEventListener("click", reset);
-function reset() {
-  location.reload();
-}
-//form
-
-const form = document.querySelector(".login-form");
-const username = document.getElementById("Username");
-const password = document.getElementById("Password");
-const message = document.getElementById("message");
-const messages = document.querySelectorAll(".message");
-const button = document.querySelector(".form-submit-btn");
-const header = document.querySelector("header");
+window.addEventListener("DOMContentLoaded", form);
 let darkmode = false;
 
-header.style.display = "none";
+//form
+function form() {
+  const form = document.querySelector(".login-form");
+  const username = document.getElementById("Username");
+  const password = document.getElementById("Password");
+  const message = document.getElementById("message");
+  const messages = document.querySelectorAll(".message");
+  const button = document.querySelector(".form-submit-btn");
+  const header = document.querySelector("header");
 
-const error = (input, message) => {
-  input.nextElementSibling.classList.add("error");
-  input.nextElementSibling.textContent = message;
-};
+  header.style.display = "none";
 
-const succes = (input) => {
-  input.nextElementSibling.classList.remove("error");
-};
-const checkRequiredFields = (inputArr) => {
-  inputArr.forEach((input) => {
-    if (input.value.trim() === "") {
-      error(input, `${input.id} is required`);
+  const error = (input, message) => {
+    input.nextElementSibling.classList.add("error");
+    input.nextElementSibling.textContent = message;
+  };
+
+  const succes = (input) => {
+    input.nextElementSibling.classList.remove("error");
+  };
+  const checkRequiredFields = (inputArr) => {
+    inputArr.forEach((input) => {
+      if (input.value.trim() === "") {
+        error(input, `${input.id} is required`);
+      }
+    });
+  };
+  const checkLength = (input, min) => {
+    if (input.value.trim().length < min) {
+      error(input, `${input.id} must be at least ${min} characters`);
+    } else {
+      succes(input);
     }
+  };
+
+  const checkName = (input) => {
+    if (input.value === "Jonas") {
+      succes(input);
+      init();
+      // window.location.href="index.html";
+    } else if (input.value === "Peter") {
+      succes(input);
+      init();
+      // window.location.href="index.html";
+    } else if (input.value === "Klaus") {
+      succes(input);
+      init();
+      // window.location.href="index.html";
+    } else if (input.value === "Dannie") {
+      succes(input);
+      init();
+      // window.location.href="index.html";
+    } else {
+      error(input, `${input.id} is wrong`);
+    }
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    checkName(username);
+    checkLength(password, 8);
+    checkRequiredFields([username, password]);
   });
-};
-const checkLength = (input, min) => {
-  if (input.value.trim().length < min) {
-    error(input, `${input.id} must be at least ${min} characters`);
-  } else {
-    succes(input);
-  }
-};
-
-const checkName = (input) => {
-  if (input.value === "Jonas") {
-    2;
-    succes(input);
-    init();
-    // window.location.href="index.html";
-  } else if (input.value === "Peter") {
-    succes(input);
-    init();
-    // window.location.href="index.html";
-  } else if (input.value === "Klaus") {
-    succes(input);
-    init();
-    // window.location.href="index.html";
-  } else if (input.value === "Dannie") {
-    succes(input);
-    init();
-    // window.location.href="index.html";
-  } else {
-    error(input, `${input.id} is wrong`);
-  }
-};
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkName(username);
-  checkLength(password, 8);
-  checkRequiredFields([username, password]);
-});
-
+}
 // end of form
 
 //loading animation
@@ -198,6 +75,7 @@ function init() {
   const nameBartender = document.querySelector(".name");
   const nameValue = document.getElementById("Username").value;
   nameBartender.innerHTML = nameValue;
+
   const screen1 = document.querySelector(".screen1");
   const loader = document.querySelector(".loader");
   const main = document.querySelector(".main");
@@ -221,68 +99,256 @@ function init() {
     header.style.display = "flex";
     document.querySelector("body").style.borderLeft = "none";
   }, 3000);
+
+  loadJSON();
 }
-//enf of loading animation
+//end of loading animation
 
-//animation for taps
-// function createBubbles(bubblesNumber, percent) {
-//   for (let i = 0; i < bubblesNumber; i++) {
-//     const random = Math.floor(Math.random() * ((percent * 200) / 100));
-//     const random2 = Math.floor(Math.random() * ((percent * 300) / 100));
-//     const random3 = Math.floor(Math.random() * ((percent * 150) / 100));
-//     const random4 = Math.floor(Math.random() * ((percent * 160) / 100));
-//     const random5 = Math.floor(Math.random() * ((percent * 160) / 80));
-//     const random6 = Math.floor(Math.random() * ((percent * 290) / 80));
-//     const random7 = Math.floor(Math.random() * ((percent * 490) / 75));
+function loadJSON() {
+  fetch("https://foobarpm.herokuapp.com/")
+    .then((response) => response.json())
+    .then((jsonData) => {
+      // when loaded, prepare objects
+      prepareObjects(jsonData);
+    });
+}
 
-//     const bubble1 = document.createElement("div");
-//     bubble1.className = "bubble1";
-//     bubble1.style.left = random + "px";
-//     bubble1.style.opacity = random + "%";
-//     bubble1.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles1").appendChild(bubble1);
-//     const bubble2 = document.createElement("div");
-//     bubble2.className = "bubble2";
-//     bubble2.style.left = random2 + "px";
-//     bubble2.style.opacity = random2 + "%";
-//     bubble2.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles2").appendChild(bubble2);
-//     const bubble3 = document.createElement("div");
-//     bubble3.className = "bubble3";
-//     bubble3.style.left = random3 + "px";
-//     bubble3.style.opacity = random3 + "%";
-//     bubble3.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles3").appendChild(bubble3);
-//     const bubble4 = document.createElement("div");
-//     bubble4.className = "bubble4";
-//     bubble4.style.left = random4 + "px";
-//     bubble4.style.opacity = random4 + "%";
-//     bubble4.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles4").appendChild(bubble4);
-//     const bubble5 = document.createElement("div");
-//     bubble5.className = "bubble5";
-//     bubble5.style.left = random5 + "px";
-//     bubble5.style.opacity = random5 + "%";
-//     bubble5.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles5").appendChild(bubble5);
-//     const bubble6 = document.createElement("div");
-//     bubble6.className = "bubble6";
-//     bubble6.style.left = random6 + "px";
-//     bubble6.style.opacity = random6 + "%";
-//     bubble6.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles6").appendChild(bubble6);
-//     const bubble7 = document.createElement("div");
-//     bubble7.className = "bubble7";
-//     bubble7.style.left = random7 + "px";
-//     bubble7.style.opacity = random7 + "%";
-//     bubble7.style.animationDelay = Math.random() * 2 + "s";
-//     document.querySelector(".bubbles7").appendChild(bubble7);
-//   }
+function prepareObjects(jsonData) {
+  showBeerTap(jsonData.taps);
+  showQueue(jsonData.queue);
+  showStorage(jsonData.storage);
+  showTask(jsonData);
+  // showBartender(jsonData.bartenders);
+  const hour2 = new Date(jsonData.timestamp).getHours();
+  const minutes2 = new Date(jsonData.timestamp).getMinutes();
+  document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
+}
+
+//BEER TAPS
+function showBeerTap(taps) {
+  const template = document.querySelector(".tapBeerTemplate").content;
+  taps.forEach((tap) => {
+    console.log(tap);
+    console.log(tap.capacity);
+    console.log(tap.level);
+    let percentage = (tap.level * 100) / tap.capacity + "%";
+    console.log(percentage);
+    const copy = template.cloneNode(true);
+    copy.querySelector(".namebeer").textContent = tap.beer;
+    let fill = copy.querySelector(".progress-fill");
+    let filltext = copy.querySelector(".progress-text");
+    let dot = copy.querySelector(".dot");
+    if (tap.inUse === true) {
+      dot.classList.remove("greendot");
+
+      dot.classList.add("reddot");
+    } else {
+      dot.classList.remove("reddot");
+      dot.classList.add("greendot");
+    }
+    filltext.textContent = percentage;
+    // fill.style.height = percentage;
+    console.log(fill);
+
+    //Delete if works
+    // const mqLarge = window.matchMedia("(min-width:800px)");
+    // console.log(mqLarge);
+    // mqLarge.addEventListener("change", mqHandler);
+    // function mqHandler(e) {
+    //   console.log(e.matches ? "large" : "not large");
+    // }
+    // mqHandler(mqLarge);
+
+    const screen = {
+      small: window.matchMedia("(min-width: 400px)"),
+      medium: window.matchMedia("(min-width: 575px)"),
+      large: window.matchMedia("(min-width:800px)"),
+    };
+
+    for (let [scr, mq] of Object.entries(screen)) {
+      if (mq) mq.addEventListener("change", mqHandler);
+    }
+    function mqHandler() {
+      let size = null;
+      for (let [scr, mq] of Object.entries(screen)) {
+        if (!mq || mq.matches) size = scr;
+      }
+
+      console.log(size);
+      if (size === "large") {
+        console.log("it is large");
+        fill.style.height = percentage;
+        fill.style.width = "100%";
+      } else if (size === "medium") {
+        fill.style.height = percentage;
+        fill.style.width = "100%";
+        console.log("it is medium");
+      } else {
+        console.log("it is small");
+        fill.style.width = percentage;
+        fill.style.height = "100%";
+      }
+    }
+
+    //Delete if works
+    // let x = window.matchMedia("(max-width: 575px)");
+
+    // function checkmedia(x) {
+    //   if (x.matches) {
+    //     console.log("it is narrow");
+    //     fill.style.width = percentage;
+    //   } else {
+    //     console.log("it is large");
+    //     fill.style.height = percentage;
+    //   }
+    // }
+    // checkmedia(x);
+
+    // x.addEventListener("change", function (event) {
+    //   checkmedia(event.target);
+    // });
+    // window.addEventListener("DOMContentLoaded", checkmedia(x));
+
+    // document.querySelector(".tap .progressfill").style.width = percentage;
+
+    const mobileView = window.matchMedia("(max-width: 575px)");
+    if (mobileView.matches) {
+      console.log("I am the mobile view");
+      fill.style.width = percentage;
+      fill.style.height = "100%";
+    } else {
+      console.log("I am the desktop view");
+
+      fill.style.height = percentage;
+      fill.style.width = "100%";
+    }
+
+    createBubbles(60, 100);
+    function createBubbles(bubblesNumber, percent) {
+      for (let i = 0; i < bubblesNumber; i++) {
+        const random = Math.floor(Math.random() * ((percent * 200) / 100));
+
+        const bubble1 = document.createElement("div");
+        bubble1.className = "bubble1";
+        bubble1.style.left = random + "px";
+        bubble1.style.opacity = random + "%";
+        bubble1.style.animationDelay = Math.random() * 2 + "s";
+        copy.querySelector(".bubbles1").appendChild(bubble1);
+      }
+    }
+    document.querySelector(".bottomtaps").appendChild(copy);
+  });
+}
+
+//NEXT IN QUEUE
+function showQueue(peopleQueue) {
+  // console.log(peopleQueue);
+  const template = document.querySelector(".nextInQueueTemplate").content;
+  peopleQueue.forEach((person) => {
+    const copy = template.cloneNode(true);
+    const hour = new Date(person.startTime).getHours();
+    const minutes = new Date(person.startTime).getMinutes();
+
+    // console.log(person);
+    copy.querySelector(".length").textContent = person.order.length;
+    copy.querySelector(".orderId span").textContent = person.id;
+    copy.querySelector(".orderTime").textContent = hour + ":" + minutes;
+    document.querySelector(".people-queue").appendChild(copy);
+  });
+}
+
+//STORAGE
+function showStorage(storage) {
+  // console.log(storage);
+  const template = document.querySelector(".storageTemplate").content;
+  storage.forEach((beer) => {
+    // console.log(beer);
+    const copy = template.cloneNode(true);
+    copy.querySelector(".namebeer").textContent = beer.name;
+    copy.querySelector(".amountbeer").textContent = `x${beer.amount}`;
+    document.querySelector(".storageitems ul").appendChild(copy);
+  });
+}
+
+//TASK
+
+function showTask(dataBase) {
+  const loggedIn = document.getElementById("Username").value;
+  const workingBartender = dataBase.bartenders.filter(
+    (x) => x.name === loggedIn
+  );
+  console.log(workingBartender, "is logged in");
+
+  const servings = dataBase.serving;
+  console.log(servings);
+
+  const OrderToDo = workingBartender[0].servingCustomer;
+  console.log("doing", OrderToDo);
+
+  const container = document.querySelector(".task");
+  console.log(servings.filter((x) => x.id === OrderToDo)[0].id);
+
+  container.querySelector(".subheading2 span").textContent = servings.filter(
+    (x) => x.id === OrderToDo
+  )[0].id;
+
+  // clone.querySelector(".amount3").textContent = order.order.length;
+  // servings
+  //   .filter((x) => x.id === OrderToDo)[0]
+  //   .order.forEach(() => {
+  //     const newItem = document.createElement("li");
+  //     newItem.setAttribute.class = servings.filter(
+  //       (x) => x.id === OrderToDo
+  //     )[0].id;
+  //     newItem.textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
+  //     document.querySelector(".task ul").appendChild(newItem);
+  //     console.log(newItem);
+  //   });
+
+  container.querySelector(".name3").textContent = servings.filter(
+    (x) => x.id === OrderToDo
+  )[0].order;
+}
+
+//LOG OUT
+
+//BARTENDER
+// function showBartender(bartenders) {
+// let abartender = bartenders.map((x) => x);
+// console.log(abartender);
+// let order = document.querySelectorAll(".orderList h2 #bartenderName");
+
+// abartender.forEach((bartender) => {
+//   console.log(bartender);
+//   document.querySelector(".orderList h2 #bartenderName").textContent = bartender.name;
+
+// });
+
+// order.forEach((anorder) => {
+//   const template = document.querySelector(".task").content;
+//   const clone = template.cloneNode(true);
+//   document.querySelector(".orderList").appendChild(clone);
+//   console.log(anorder);
+//   clone.innerHTML = abartender.name;
+// });
+
+// bartenders.forEach((bartender) => {
+// let order = document.querySelectorAll(".orderList h2 #bartenderName");
+// console.log(order);
+// order.forEach((anorder) => {
+//   anorder.textContent = bartender.name;
+// });
+// console.log(bartender);
+
+// clone.querySelector("#bartenderName").textContent = bartender.name;
+// });
 // }
 
-// window.addEventListener("DOMContentLoaded", () => {
-//   createBubbles(60, 100);
-// });
+//LOG OUT
+document.querySelector(".logout").addEventListener("click", reset);
+function reset() {
+  location.reload();
+}
 //DARK MODE
 
 const modeSwitch = document.querySelector(".switch");
@@ -340,19 +406,3 @@ modeSwitch.onclick = function () {
 };
 
 //displaying the data
-
-function displayBeerTap(beertap) {
-  console.log(beertap);
-  // let arr = jsonData.taps;
-
-  // arr.forEach((tap) => {
-  //   console.log(tap.beer);
-  //   // beertap.namebeer = tap.beer;
-  //   // beertap.dot = tap.beer;
-  // });
-
-  const clone = document.querySelector("#beertap").content.cloneNode(true);
-  console.log(clone);
-  clone.querySelector(".namebeer").textContent = beertap.namebeer;
-  document.querySelector(".bottomtaps").appendChild(clone);
-}
