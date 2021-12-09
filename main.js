@@ -231,7 +231,6 @@ document.querySelector(".logout").addEventListener("click", reset);
 function reset() {
   location.reload();
 }
-
 //DARK MODE
 
 const modeSwitch = document.querySelector(".switch");
@@ -285,3 +284,21 @@ modeSwitch.onclick = function () {
     document.querySelector(".exit img").src = "assets/exit_grey.png";
   }
 };
+
+//displaying the data
+
+function displayBeerTap(beertap) {
+  console.log(beertap);
+  // let arr = jsonData.taps;
+
+  // arr.forEach((tap) => {
+  //   console.log(tap.beer);
+  //   // beertap.namebeer = tap.beer;
+  //   // beertap.dot = tap.beer;
+  // });
+
+  const clone = document.querySelector("#beertap").content.cloneNode(true);
+  console.log(clone);
+  clone.querySelector(".namebeer").textContent = beertap.namebeer;
+  document.querySelector(".bottomtaps").appendChild(clone);
+}
