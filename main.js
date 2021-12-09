@@ -1,23 +1,14 @@
 "use strict";
-// fetching data
+
 window.addEventListener("DOMContentLoaded", form);
 let darkmode = false;
-let allOrders = [];
-const Order = {
-  name: "",
-  servingCustomer: "",
-  startTime: 0,
-  order: "",
-};
 
 //form
 function form() {
   const form = document.querySelector(".login-form");
   const username = document.getElementById("Username");
   const password = document.getElementById("Password");
-  const message = document.getElementById("message");
-  const messages = document.querySelectorAll(".message");
-  const button = document.querySelector(".form-submit-btn");
+  const message = document.querySelector(".message");
   const header = document.querySelector("header");
 
   header.style.display = "none";
@@ -37,31 +28,20 @@ function form() {
       }
     });
   };
-  const checkLength = (input, min) => {
-    if (input.value.trim().length < min) {
-      error(input, `${input.id} must be at least ${min} characters`);
-    } else {
-      succes(input);
-    }
-  };
-  // input.value === "Jonas" === bartdern[3]
+
   const checkName = (input) => {
     if (input.value === "Jonas") {
       succes(input);
       init();
-      // window.location.href="index.html";
     } else if (input.value === "Peter") {
       succes(input);
       init();
-      // window.location.href="index.html";
     } else if (input.value === "Klaus") {
       succes(input);
       init();
-      // window.location.href="index.html";
     } else if (input.value === "Dannie") {
       succes(input);
       init();
-      // window.location.href="index.html";
     } else {
       error(input, `${input.id} is wrong`);
     }
@@ -70,7 +50,6 @@ function form() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     checkName(username);
-    checkLength(password, 8);
     checkRequiredFields([username, password]);
   });
 }
@@ -110,16 +89,21 @@ function init() {
   loadJSON();
 }
 //end of loading animation
+
+//fetching data
 function loadJSON() {
   fetch("https://foobarpm.herokuapp.com/")
     .then((response) => response.json())
     .then((jsonData) => {
-      // when loaded, prepare objects
       prepareObjects(jsonData);
 
       // refresh();
     });
 }
+
+//end of fetching data
+
+//refresh data
 
 // function refresh(){
 //   const screen1 = document.querySelector(".screen1");
@@ -133,29 +117,17 @@ function loadJSON() {
 //   main.style.display = "grid";
 // }, 10000)};
 
+//end of referesh data
+
 function prepareObjects(jsonData) {
-  // const json = Object.values(jsonData);
-  // const obj1 = json[3];
-  // const obj2 = json[4];
-
-  // const obj3 = Object.assign(obj1, obj2);
-
-  // console.log(obj3);
-
-  // console.log(json);
-  // console.log(json[2]);
-  // const objectfromarray = json[2].map((obj) => {
-  //   console.log(obj);
-  // });
-
-  // console.log(objectfromarray);
-
   showBeerTap(jsonData.taps);
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
   showTask(jsonData);
   convertTime(jsonData.timestamp);
 }
+
+//dipaly data
 function convertTime(time) {
   const hour2 = new Date(time).getHours();
   const minutes2 = new Date(time).getMinutes();
@@ -182,7 +154,6 @@ function showBeerTap(taps) {
       dot.classList.add("greendot");
     }
     filltext.textContent = percentage;
-    // fill.style.height = percentage;
 
     const screen = {
       small: window.matchMedia("(min-width: 400px)"),
@@ -201,7 +172,6 @@ function showBeerTap(taps) {
 
       console.log(size);
       if (size === "large") {
-        // console.log("it is large");
         fill.style.height = percentage;
         fill.style.width = "100%";
       } else if (size === "medium") {
@@ -266,48 +236,40 @@ function showStorage(storage) {
 }
 
 //TASK
-
 function showTask(dataBase) {
   const loggedIn = document.getElementById("Username").value;
-  const workingBartender = dataBase.bartenders.filter(
-    (x) => x.name === loggedIn
-  );
-  console.log(workingBartender, "is logged in");
-
+  const workingBartender = dataBase.bartenders.filter((x) => x.name === loggedIn);
   const servings = dataBase.serving;
-  console.log(servings);
-
   const OrderToDo = workingBartender[0].servingCustomer;
-  console.log("doing", OrderToDo);
-
   const container = document.querySelector(".task");
-  console.log(servings.filter((x) => x.id === OrderToDo)[0].id);
+  const container2 = document.querySelector(".time-button");
+  const hour3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getHours();
+  const minute3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getMinutes();
 
-  container.querySelector(".subheading2 span").textContent = servings.filter(
-    (x) => x.id === OrderToDo
-  )[0].id;
-
-  //   .filter((x) => x.id === OrderToDo)[0]
-  //   .order.forEach(() => {
-  //     const newItem = document.createElement("li");
-  //     newItem.setAttribute.class = servings.filter(
-  //       (x) => x.id === OrderToDo
-  //     )[0].id;
-  //     newItem.textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
-  //     document.querySelector(".task ul").appendChild(newItem);
-  //     console.log(newItem);
-  //   });
-
-  container.querySelector(".name3").textContent = servings.filter(
-    (x) => x.id === OrderToDo
-  )[0].order;
+  container.querySelector(".subheading2 span").textContent = " " + `#${servings.filter((x) => x.id === OrderToDo)[0].id}`;
+  container.querySelector(".name3").textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
+  container2.querySelector(".order-time").textContent = hour3 + ":" + minute3;
 }
+
+//   .filter((x) => x.id === OrderToDo)[0]
+//   .order.forEach(() => {
+//     const newItem = document.createElement("li");
+//     newItem.setAttribute.class = servings.filter(
+//       (x) => x.id === OrderToDo
+//     )[0].id;
+//     newItem.textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
+//     document.querySelector(".task ul").appendChild(newItem);
+//     console.log(newItem);
+//   });
 
 //LOG OUT
 document.querySelector(".logout").addEventListener("click", reset);
 function reset() {
   location.reload();
 }
+
+//end of display data
+
 //DARK MODE
 
 const modeSwitch = document.querySelector(".switch");
@@ -319,8 +281,7 @@ switchDark.onclick = function () {
     document.querySelector("body").classList.add("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #849478";
     document.querySelector(".screen1").classList.add("dark");
-    document.querySelector(".screen1 .switch").src =
-      "assets/FooBar-switch2.png";
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
 
     document.querySelector(".loader").classList.add("dark");
@@ -343,8 +304,7 @@ modeSwitch.onclick = function () {
     darkmode = true;
     console.log(darkmode);
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src =
-      "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
@@ -363,5 +323,4 @@ modeSwitch.onclick = function () {
     document.querySelector(".exit img").src = "assets/exit_grey.png";
   }
 };
-
-//displaying the data
+//end of dark mode
