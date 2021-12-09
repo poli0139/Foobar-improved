@@ -22,7 +22,7 @@ function prepareObjects(jsonData) {
   showBeerTap(jsonData.taps);
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
-  showTask(jsonData.serving);
+  showTask(jsonData);
   // showBartender(jsonData.bartenders);
 }
 
@@ -81,19 +81,41 @@ function showStorage(storage) {
 
 //TASK
 
-function showTask(serving) {
-  console.log(serving);
+function showTask(dataBase) {
+  const servings = dataBase.serving;
+  console.log(servings);
+  const bartenderOrder = dataBase.bartenders;
+  console.log(bartenderOrder);
+  const jonasOrder = bartenderOrder[2].servingCustomer;
+  console.log(`Jonas is doing ${jonasOrder}`);
+
   const template = document.querySelector(".task").content;
-  serving.forEach((order) => {
-    console.log(order);
-    const clone = template.cloneNode(true);
-    clone.querySelector(".subheading2 span").textContent = `#${order.id}`;
+  console.log(servings.filter((x) => x.id === jonasOrder));
 
-    // clone.querySelector(".amount3").textContent = order.order.length;
-    clone.querySelector(".name3").textContent = " " + order.order;
+  const clone = template.cloneNode(true);
+  clone.querySelector(".subheading2 span").textContent = `#${
+    servings.filter((x) => x.id === jonasOrder)[0].id
+  }`;
 
-    document.querySelector(".orderList").appendChild(clone);
-  });
+  // clone.querySelector(".amount3").textContent = order.order.length;
+  // servings
+  //   .filter((x) => x.id === jonasOrder)[0]
+  //   .order.forEach(() => {
+  //     const newItem = document.createElement("li");
+  //     newItem.setAttribute.class = servings.filter(
+  //       (x) => x.id === jonasOrder
+  //     )[0].id;
+  //     newItem.textContent = servings.filter(
+  //       (x) => x.id === jonasOrder
+  //     )[0].order;
+  //     document.querySelector(".task ul").appendChild(newItem);
+  //   });
+
+  clone.querySelector(".name3").textContent = servings.filter(
+    (x) => x.id === jonasOrder
+  )[0].order;
+
+  document.querySelector(".orderList").appendChild(clone);
 }
 
 //LOG OUT
@@ -272,7 +294,8 @@ switchDark.onclick = function () {
     document.querySelector("body").classList.add("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #849478";
     document.querySelector(".screen1").classList.add("dark");
-    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".screen1 .switch").src =
+      "assets/FooBar-switch2.png";
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
 
     document.querySelector(".loader").classList.add("dark");
@@ -295,7 +318,8 @@ modeSwitch.onclick = function () {
     darkmode = true;
     console.log(darkmode);
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src =
+      "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
