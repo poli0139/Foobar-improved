@@ -154,39 +154,12 @@ function prepareObjects(jsonData) {
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
   showTask(jsonData);
-  allOrders = json[2].map(prepareOrder);
-  console.log(allOrders);
-  displayList(allOrders);
-  const hour2 = new Date(jsonData.timestamp).getHours();
-  const minutes2 = new Date(jsonData.timestamp).getMinutes();
+  convertTime(jsonData.timestamp);
+}
+function convertTime(time) {
+  const hour2 = new Date(time).getHours();
+  const minutes2 = new Date(time).getMinutes();
   document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
-}
-
-function prepareOrder(elem) {
-  console.log(elem);
-  const order = Object.create(Order);
-  // const bartenders = elem[1];
-  // const name5 = bartenders.name;
-  // console.log(bartenders);
-  // order.name = elem.order;
-  // console.log(order.name);
-  // order.servingCustomer = elem.servingCustomer;
-  order.order = elem.order;
-  console.log(order.order);
-
-  return order;
-}
-function displayList(orders) {
-  document.querySelector(".orderList").innerHTML = "";
-
-  orders.forEach(displayOrder);
-}
-
-function displayOrder(order) {
-  console.log(order);
-  const clone = document.querySelector(".task").content.cloneNode(true);
-  clone.querySelector(".orderId").textContent = order.order;
-  document.querySelector(".orderList").appendChild(clone);
 }
 
 //BEER TAPS
@@ -293,66 +266,42 @@ function showStorage(storage) {
 }
 
 //TASK
-function showTask(data) {
 
-  let servingdata = data.serving;
-  let bartendersdata = data.bartenders;
+function showTask(dataBase) {
+  const loggedIn = document.getElementById("Username").value;
+  const workingBartender = dataBase.bartenders.filter(
+    (x) => x.name === loggedIn
+  );
+  console.log(workingBartender, "is logged in");
 
-  console.log(servingdata);
-  const template = document.querySelector(".task").content;
+  const servings = dataBase.serving;
+  console.log(servings);
 
-  servingdata.forEach((order) => {
-    const clone = template.cloneNode(true);
+  const OrderToDo = workingBartender[0].servingCustomer;
+  console.log("doing", OrderToDo);
 
-    clone.querySelector(".orderId").textContent = `#${order.id}`;
-    clone.querySelector(".singleOrder span").textContent = order.order.length;
-    clone.querySelector(".name3").textContent = order.order;
-//     clone.querySelector("#bartenderName").textContent = bartendersdata.name;
+  const container = document.querySelector(".task");
+  console.log(servings.filter((x) => x.id === OrderToDo)[0].id);
 
-//     document.querySelector(".orderList").appendChild(clone);
-//   });
+  container.querySelector(".subheading2 span").textContent = servings.filter(
+    (x) => x.id === OrderToDo
+  )[0].id;
 
-//   const template2 = document.querySelector(".task").content;
+  //   .filter((x) => x.id === OrderToDo)[0]
+  //   .order.forEach(() => {
+  //     const newItem = document.createElement("li");
+  //     newItem.setAttribute.class = servings.filter(
+  //       (x) => x.id === OrderToDo
+  //     )[0].id;
+  //     newItem.textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
+  //     document.querySelector(".task ul").appendChild(newItem);
+  //     console.log(newItem);
+  //   });
 
-//   bartendersdata.forEach((bartender) => {
-//     console.log(bartender);
-//     const clone = template2.cloneNode(true);
-//     clone.querySelector("#bartenderName").textContent = bartender.name;
-    document.querySelector(".orderList").appendChild(clone);
-  });
+  container.querySelector(".name3").textContent = servings.filter(
+    (x) => x.id === OrderToDo
+  )[0].order;
 }
-
-//BARTENDER
-// function showBartender(bartenders) {
-// let abartender = bartenders.map((x) => x);
-// console.log(abartender);
-// let order = document.querySelectorAll(".orderList h2 #bartenderName");
-
-// abartender.forEach((bartender) => {
-//   console.log(bartender);
-//   document.querySelector(".orderList h2 #bartenderName").textContent = bartender.name;
-
-// });
-
-// order.forEach((anorder) => {
-//   const template = document.querySelector(".task").content;
-//   const clone = template.cloneNode(true);
-//   document.querySelector(".orderList").appendChild(clone);
-//   console.log(anorder);
-//   clone.innerHTML = abartender.name;
-// });
-
-// bartenders.forEach((bartender) => {
-// let order = document.querySelectorAll(".orderList h2 #bartenderName");
-// console.log(order);
-// order.forEach((anorder) => {
-//   anorder.textContent = bartender.name;
-// });
-// console.log(bartender);
-
-// clone.querySelector("#bartenderName").textContent = bartender.name;
-// });
-// }
 
 //LOG OUT
 document.querySelector(".logout").addEventListener("click", reset);
@@ -370,7 +319,8 @@ switchDark.onclick = function () {
     document.querySelector("body").classList.add("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #849478";
     document.querySelector(".screen1").classList.add("dark");
-    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".screen1 .switch").src =
+      "assets/FooBar-switch2.png";
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
 
     document.querySelector(".loader").classList.add("dark");
@@ -393,7 +343,8 @@ modeSwitch.onclick = function () {
     darkmode = true;
     console.log(darkmode);
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src =
+      "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
