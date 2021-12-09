@@ -118,9 +118,11 @@ function prepareObjects(jsonData) {
   showQueue(jsonData.queue);
   showStorage(jsonData.storage);
   showTask(jsonData);
-  // showBartender(jsonData.bartenders);
-  const hour2 = new Date(jsonData.timestamp).getHours();
-  const minutes2 = new Date(jsonData.timestamp).getMinutes();
+  convertTime(jsonData.timestamp);
+}
+function convertTime(time) {
+  const hour2 = new Date(time).getHours();
+  const minutes2 = new Date(time).getMinutes();
   document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
 }
 
@@ -292,8 +294,6 @@ function showTask(dataBase) {
     (x) => x.id === OrderToDo
   )[0].id;
 
-  // clone.querySelector(".amount3").textContent = order.order.length;
-  // servings
   //   .filter((x) => x.id === OrderToDo)[0]
   //   .order.forEach(() => {
   //     const newItem = document.createElement("li");
@@ -309,40 +309,6 @@ function showTask(dataBase) {
     (x) => x.id === OrderToDo
   )[0].order;
 }
-
-//LOG OUT
-
-//BARTENDER
-// function showBartender(bartenders) {
-// let abartender = bartenders.map((x) => x);
-// console.log(abartender);
-// let order = document.querySelectorAll(".orderList h2 #bartenderName");
-
-// abartender.forEach((bartender) => {
-//   console.log(bartender);
-//   document.querySelector(".orderList h2 #bartenderName").textContent = bartender.name;
-
-// });
-
-// order.forEach((anorder) => {
-//   const template = document.querySelector(".task").content;
-//   const clone = template.cloneNode(true);
-//   document.querySelector(".orderList").appendChild(clone);
-//   console.log(anorder);
-//   clone.innerHTML = abartender.name;
-// });
-
-// bartenders.forEach((bartender) => {
-// let order = document.querySelectorAll(".orderList h2 #bartenderName");
-// console.log(order);
-// order.forEach((anorder) => {
-//   anorder.textContent = bartender.name;
-// });
-// console.log(bartender);
-
-// clone.querySelector("#bartenderName").textContent = bartender.name;
-// });
-// }
 
 //LOG OUT
 document.querySelector(".logout").addEventListener("click", reset);
