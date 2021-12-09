@@ -1,6 +1,7 @@
 "use strict";
 // fetching data
 window.addEventListener("DOMContentLoaded", form);
+let darkmode = false;
 
 //form
 function form() {
@@ -11,7 +12,6 @@ function form() {
   const messages = document.querySelectorAll(".message");
   const button = document.querySelector(".form-submit-btn");
   const header = document.querySelector("header");
-  let darkmode = false;
 
   header.style.display = "none";
 
@@ -123,13 +123,120 @@ function prepareObjects(jsonData) {
   const minutes2 = new Date(jsonData.timestamp).getMinutes();
   document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
 }
+//BEER TAPS
 
 //BEER TAPS
 function showBeerTap(taps) {
   const template = document.querySelector(".tapBeerTemplate").content;
   taps.forEach((tap) => {
+    console.log(tap);
+    console.log(tap.capacity);
+    console.log(tap.level);
+    let percentage = (tap.level * 100) / tap.capacity + "%";
+    console.log(percentage);
     const copy = template.cloneNode(true);
     copy.querySelector(".namebeer").textContent = tap.beer;
+    let fill = copy.querySelector(".progress-fill");
+    let filltext = copy.querySelector(".progress-text");
+    let dot = copy.querySelector(".dot");
+    if (tap.inUse === true) {
+      dot.classList.remove("greendot");
+
+      dot.classList.add("reddot");
+    } else {
+      dot.classList.remove("reddot");
+      dot.classList.add("greendot");
+    }
+    filltext.textContent = percentage;
+    // fill.style.height = percentage;
+    console.log(fill);
+
+    //Delete if works
+    // const mqLarge = window.matchMedia("(min-width:800px)");
+    // console.log(mqLarge);
+    // mqLarge.addEventListener("change", mqHandler);
+    // function mqHandler(e) {
+    //   console.log(e.matches ? "large" : "not large");
+    // }
+    // mqHandler(mqLarge);
+
+    const screen = {
+      small: window.matchMedia("(min-width: 400px)"),
+      medium: window.matchMedia("(min-width: 575px)"),
+      large: window.matchMedia("(min-width:800px)"),
+    };
+
+    for (let [scr, mq] of Object.entries(screen)) {
+      if (mq) mq.addEventListener("change", mqHandler);
+    }
+    function mqHandler() {
+      let size = null;
+      for (let [scr, mq] of Object.entries(screen)) {
+        if (!mq || mq.matches) size = scr;
+      }
+
+      console.log(size);
+      if (size === "large") {
+        console.log("it is large");
+        fill.style.height = percentage;
+        fill.style.width = "100%";
+      } else if (size === "medium") {
+        fill.style.height = percentage;
+        fill.style.width = "100%";
+        console.log("it is medium");
+      } else {
+        console.log("it is small");
+        fill.style.width = percentage;
+        fill.style.height = "100%";
+      }
+    }
+
+    //Delete if works
+    // let x = window.matchMedia("(max-width: 575px)");
+
+    // function checkmedia(x) {
+    //   if (x.matches) {
+    //     console.log("it is narrow");
+    //     fill.style.width = percentage;
+    //   } else {
+    //     console.log("it is large");
+    //     fill.style.height = percentage;
+    //   }
+    // }
+    // checkmedia(x);
+
+    // x.addEventListener("change", function (event) {
+    //   checkmedia(event.target);
+    // });
+    // window.addEventListener("DOMContentLoaded", checkmedia(x));
+
+    // document.querySelector(".tap .progressfill").style.width = percentage;
+
+    const mobileView = window.matchMedia("(max-width: 575px)");
+    if (mobileView.matches) {
+      console.log("I am the mobile view");
+      fill.style.width = percentage;
+      fill.style.height = "100%";
+    } else {
+      console.log("I am the desktop view");
+
+      fill.style.height = percentage;
+      fill.style.width = "100%";
+    }
+
+    createBubbles(60, 100);
+    function createBubbles(bubblesNumber, percent) {
+      for (let i = 0; i < bubblesNumber; i++) {
+        const random = Math.floor(Math.random() * ((percent * 200) / 100));
+
+        const bubble1 = document.createElement("div");
+        bubble1.className = "bubble1";
+        bubble1.style.left = random + "px";
+        bubble1.style.opacity = random + "%";
+        bubble1.style.animationDelay = Math.random() * 2 + "s";
+        copy.querySelector(".bubbles1").appendChild(bubble1);
+      }
+    }
     document.querySelector(".bottomtaps").appendChild(copy);
   });
 }
@@ -286,19 +393,3 @@ modeSwitch.onclick = function () {
 };
 
 //displaying the data
-
-function displayBeerTap(beertap) {
-  console.log(beertap);
-  // let arr = jsonData.taps;
-
-  // arr.forEach((tap) => {
-  //   console.log(tap.beer);
-  //   // beertap.namebeer = tap.beer;
-  //   // beertap.dot = tap.beer;
-  // });
-
-  const clone = document.querySelector("#beertap").content.cloneNode(true);
-  console.log(clone);
-  clone.querySelector(".namebeer").textContent = beertap.namebeer;
-  document.querySelector(".bottomtaps").appendChild(clone);
-}
