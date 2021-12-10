@@ -214,7 +214,7 @@ function showQueue(peopleQueue) {
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
-    const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0");
+    const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0") ;
 
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
