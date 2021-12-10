@@ -16,7 +16,7 @@ function loadJSON() {
     });
 }
 function prepareObjects(jsonData) {
-  // console.log(jsonData);
+  console.log(jsonData);
   // console.log(jsonData.bar);
   // console.log(jsonData.bar.name);
   showBeerTap(jsonData.taps);
