@@ -96,27 +96,8 @@ function loadJSON() {
     .then((response) => response.json())
     .then((jsonData) => {
       prepareObjects(jsonData);
-
-      // refresh();
     });
 }
-
-//end of fetching data
-
-//refresh data
-
-//   const screen1 = document.querySelector(".screen1");
-//   const loader = document.querySelector(".loader");
-//   const main = document.querySelector(".main");
-
-// setTimeout(function(){
-//   location.reload(1);
-//   loader.style.display = "none";
-//   loader.style.visibility = "hidden";
-//   main.style.display = "grid";
-// }, 10000)};
-
-//end of referesh data
 
 function prepareObjects(jsonData) {
   showBeerTap(jsonData.taps);
@@ -151,6 +132,12 @@ function showBeerTap(taps) {
     } else {
       dot.classList.remove("reddot");
       dot.classList.add("greendot");
+    }
+    if (percentage === "0%") {
+      dot.classList.add("hidden");
+      // tap.classList.add("text");
+    } else {
+      dot.classList.remove("hidden");
     }
     filltext.textContent = percentage;
 
@@ -211,10 +198,14 @@ function showBeerTap(taps) {
 //NEXT IN QUEUE
 function showQueue(peopleQueue) {
   const template = document.querySelector(".nextInQueueTemplate").content;
+  if (peopleQueue.length === 0) {
+    console.log("no one");
+    document.querySelector(".noone").textContent = "No one is in queue.";
+  }
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
-    const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0") ;
+    const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0");
 
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
@@ -249,17 +240,6 @@ function showTask(dataBase) {
   container.querySelector(".name3").textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
   container2.querySelector(".order-time").textContent = hour3 + ":" + minute3;
 }
-
-//   .filter((x) => x.id === OrderToDo)[0]
-//   .order.forEach(() => {
-//     const newItem = document.createElement("li");
-//     newItem.setAttribute.class = servings.filter(
-//       (x) => x.id === OrderToDo
-//     )[0].id;
-//     newItem.textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
-//     document.querySelector(".task ul").appendChild(newItem);
-//     console.log(newItem);
-//   });
 
 //LOG OUT
 document.querySelector(".logout").addEventListener("click", reset);
