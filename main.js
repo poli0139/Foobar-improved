@@ -96,27 +96,8 @@ function loadJSON() {
     .then((response) => response.json())
     .then((jsonData) => {
       prepareObjects(jsonData);
-
-      // refresh();
     });
 }
-
-//end of fetching data
-
-//refresh data
-
-//   const screen1 = document.querySelector(".screen1");
-//   const loader = document.querySelector(".loader");
-//   const main = document.querySelector(".main");
-
-// setTimeout(function(){
-//   location.reload(1);
-//   loader.style.display = "none";
-//   loader.style.visibility = "hidden";
-//   main.style.display = "grid";
-// }, 10000)};
-
-//end of referesh data
 
 function prepareObjects(jsonData) {
   showBeerTap(jsonData.taps);
@@ -151,6 +132,12 @@ function showBeerTap(taps) {
     } else {
       dot.classList.remove("reddot");
       dot.classList.add("greendot");
+    }
+    if (percentage === "0%") {
+      dot.classList.add("hidden");
+      // tap.classList.add("text");
+    } else {
+      dot.classList.remove("hidden");
     }
     filltext.textContent = percentage;
 
@@ -211,6 +198,10 @@ function showBeerTap(taps) {
 //NEXT IN QUEUE
 function showQueue(peopleQueue) {
   const template = document.querySelector(".nextInQueueTemplate").content;
+  if (peopleQueue.length === 0) {
+    console.log("no one");
+    document.querySelector(".noone").textContent = "No one is in queue.";
+  }
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
