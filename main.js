@@ -237,22 +237,19 @@ function showTask(dataBase) {
   const minute3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getMinutes().toString().padStart(2, "0");
 
   container.querySelector(".subheading2 span").textContent = " " + `#${servings.filter((x) => x.id === OrderToDo)[0].id}`;
-  container.querySelector(".name3").textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
+
+  console.log(servings.filter((x) => x.id === OrderToDo)[0].order);
+  const beers = servings.filter((x) => x.id === OrderToDo)[0].order;
+  beers.map(function (item) {
+    const element = document.createElement("li");
+    element.innerHTML = item;
+    document.querySelector(".task ul").appendChild(element);
+  });
+
+  
+  // container.querySelector(".name3").textContent = mappedBeer;
   container2.querySelector(".order-time").textContent = hour3 + ":" + minute3;
 }
-
-
-
-//   .filter((x) => x.id === OrderToDo)[0]
-//   .order.forEach(() => {
-//     const newItem = document.createElement("li");
-//     newItem.setAttribute.class = servings.filter(
-//       (x) => x.id === OrderToDo
-//     )[0].id;
-//     newItem.textContent = servings.filter((x) => x.id === OrderToDo)[0].order;
-//     document.querySelector(".task ul").appendChild(newItem);
-//     console.log(newItem);
-//   });
 
 //LOG OUT
 document.querySelector(".logout").addEventListener("click", reset);
