@@ -22,12 +22,12 @@
   width: 1207px;
   height: 665px;
   padding-top: 10vw;
+  // opacity: 52%;
   box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
   border-radius: 9px;
   background-image: url(assets/beer-liquid.jpg);
   background-repeat: no-repeat;
 background-size: cover;
-  // opacity: 52%;
   position: relative;
   animation: fade-out 3s 1 linear;
 }
@@ -52,11 +52,14 @@ background-size: cover;
 
 
 @keyframes fade-out {
-  100% {
-    opacity: 1;
+  0% {
+    opacity: 0%;
   }
-  50% {
-    opacity: 0;
+  50%{
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
   }
 }
 
