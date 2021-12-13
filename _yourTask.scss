@@ -14,6 +14,9 @@
   justify-content: space-between;
   font-family: variables.$regular;
   box-shadow: 2px 2px 6px variables.$background-light;
+  overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: variables.$dark-green variables.$section-background;
   .orderList {
     width: 70%;
   }
@@ -25,15 +28,15 @@
     margin-top: 0;
     height: 5.5rem;
     row-gap: 0.3rem;
-    overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: variables.$dark-green variables.$section-background;
+    // overflow: auto;
+    // scrollbar-width: thin;
+    // scrollbar-color: variables.$dark-green variables.$section-background;
   }
-  ul::-webkit-scrollbar {
+  .order::-webkit-scrollbar {
     width: 7px;
     background: variables.$section-background;
   }
-  ul::-webkit-scrollbar-thumb {
+  .order::-webkit-scrollbar-thumb {
     background: variables.$dark-green;
   }
   .time-button {

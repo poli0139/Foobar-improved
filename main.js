@@ -268,7 +268,7 @@ function showTask(dataBase) {
   beers.map(function (item) {
     const element = document.createElement("li");
     element.innerHTML = item;
-    document.querySelector(".task ul").appendChild(element);
+    document.querySelector(".singleOrder").appendChild(element);
   });
 
   // container.querySelector(".name3").textContent = mappedBeer;
