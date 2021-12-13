@@ -90,13 +90,38 @@ function init() {
 }
 //end of loading animation
 
-//fetching data
+// fetching data
 function loadJSON() {
   fetch("https://foobarpm.herokuapp.com/")
     .then((response) => response.json())
     .then((jsonData) => {
       prepareObjects(jsonData);
     });
+}
+
+// reLoadingJSON
+// refress objects
+
+setInterval(function () {
+  removeObjects();
+  loadJSON();
+}, 5000);
+
+function removeObjects() {
+  console.log("this works");
+  let bottomTabs = document.querySelector(".bottomtaps");
+  while (bottomTabs.firstChild) {
+    bottomTabs.removeChild(bottomTabs.lastChild);
+  }
+  let queue = document.querySelector(".people-queue");
+  while (queue.firstChild) {
+    queue.removeChild(queue.lastChild);
+  }
+  let storage = document.querySelector(".storageitems ul");
+  while (storage.firstChild) {
+    storage.removeChild(storage.lastChild);
+  }
+  let task = 
 }
 
 function prepareObjects(jsonData) {
@@ -246,7 +271,6 @@ function showTask(dataBase) {
     document.querySelector(".task ul").appendChild(element);
   });
 
-  
   // container.querySelector(".name3").textContent = mappedBeer;
   container2.querySelector(".order-time").textContent = hour3 + ":" + minute3;
 }
