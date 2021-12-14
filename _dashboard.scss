@@ -10,6 +10,7 @@ body {
   margin: 0;
   height: 100vh;
   background-color: variables.$background-light;
+  height: 100vh;
 }
 .main {
   display: none;
@@ -24,25 +25,26 @@ header {
   margin-bottom: 1rem;
   // visibility: hidden;
   .logo {
-    width: 15rem;
+    width: 12rem;
     height: fit-content;
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 .switch {
   width: 6rem;
   height: fit-content;
+  margin-left: 6vw;
 }
 
 main {
+  height: 85vh;
   display: grid;
   grid-template-columns: 1fr 1fr 0.7fr 1.3fr 1fr;
-  grid-template-rows: 0.5fr 1.5fr;
+  grid-template-rows: 20vh 65vh;
   column-gap: 3vw;
-  // row-gap: 3vw; -- we do not need it
   margin: 0 2rem;
   margin-bottom: 2vw;
 }
@@ -57,9 +59,11 @@ main {
 .overview {
   grid-column-start: 1;
   grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 .taps {
-  margin-bottom: 3vw;
+  margin-bottom: 2vw;
 }
 .yourTask {
   grid-column-start: 4;
@@ -71,7 +75,7 @@ main {
 .section-heading {
   font-family: variables.$semiBold;
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin: 0.5rem auto;
   color: variables.$dark-green;
 }
@@ -92,7 +96,11 @@ main {
   border-top: solid variables.$dark-green 2px;
   cursor: pointer;
 }
-
+@media only screen and (min-width: 900px) {
+  body {
+    overflow: hidden;
+  }
+}
 @media only screen and (max-width: 900px) {
   main {
     grid-template-rows: 0.5fr 1.5fr 1fr;

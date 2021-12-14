@@ -96,6 +96,7 @@ function loadJSON() {
     .then((response) => response.json())
     .then((jsonData) => {
       prepareObjects(jsonData);
+      // removeTask(jsonData);
     });
 }
 
@@ -105,8 +106,22 @@ function loadJSON() {
 setInterval(function () {
   removeObjects();
   loadJSON();
-}, 5000);
+}, 10000);
+document.querySelector(".done-btn").addEventListener("click", removeTask);
+function removeTask() {
+  // console.log(jsonData);
+  let task = document.querySelector(".singleOrder");
+  let orderid = document.querySelector(".orderId");
 
+  while (task.firstChild) {
+    task.removeChild(task.lastChild);
+    orderid.remove();
+  }
+  document.querySelector(".popup-done").classList.remove("hidden");
+  setTimeout(() => {
+    document.querySelector(".popup-done").classList.add("hidden");
+  }, 2000);
+}
 function removeObjects() {
   console.log("this works");
   let bottomTabs = document.querySelector(".bottomtaps");
@@ -121,7 +136,10 @@ function removeObjects() {
   while (storage.firstChild) {
     storage.removeChild(storage.lastChild);
   }
-  let task = 
+  let task = document.querySelector(".singleOrder");
+  while (task.firstChild) {
+    task.removeChild(task.lastChild);
+  }
 }
 
 function prepareObjects(jsonData) {
@@ -226,12 +244,19 @@ function showQueue(peopleQueue) {
   if (peopleQueue.length === 0) {
     console.log("no one");
     document.querySelector(".noone").textContent = "No one is in queue.";
+  } else {
+    document.querySelector(".noone").textContent = "";
   }
+  // console.log(darkmode);
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
     const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0");
-
+    if (darkmode === true) {
+      copy.querySelector(".next-icon").src = "assets/next_yellow.png";
+    } else if (darkmode === false) {
+      copy.querySelector(".next-icon").src = "assets/next_light-green.png";
+    }
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
     copy.querySelector(".orderTime").textContent = hour + ":" + minutes;
@@ -291,21 +316,32 @@ const switchDark = document.querySelector(".screen1 .switch");
 switchDark.onclick = function () {
   if (darkmode === false) {
     darkmode = true;
+    // document.querySelector(".popup-done").classList.add("darkpop");
+    // document.querySelector(".popup-done").classList.remove("lightpop");
+
     document.querySelector("body").classList.add("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #849478";
     document.querySelector(".screen1").classList.add("dark");
     document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
-
+    document.querySelector(".logo").src = "assets/logo-yellow.png";
+    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".loader").classList.add("dark");
     document.querySelector(".logo2 img").src = "assets/logo-yellow.png";
   } else {
     darkmode = false;
+    // document.querySelector(".popup-done").classList.add("lightpop");
+    // document.querySelector(".popup-done").classList.remove("darkpop");
+
     document.querySelector("body").classList.remove("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #fcce72";
     document.querySelector(".screen1").classList.remove("dark");
     document.querySelector(".screen1 .switch").src = "assets/FooBar-switch.png";
     document.querySelector(".logo3 img").src = "assets/logo-green.png";
+    document.querySelector(".logo").src = "assets/logo-green.png";
+    document.querySelector(".bartender-img").src = "assets/bartender-green.png";
+    document.querySelector(".switch").src = "assets/FooBar-switch.png";
 
     document.querySelector(".loader").classList.remove("dark");
     document.querySelector(".logo2 img").src = "assets/logo-green.png";
@@ -324,6 +360,12 @@ modeSwitch.onclick = function () {
       element.src = "assets/next_yellow.png";
     });
     document.querySelector(".exit img").src = "assets/exit_white.png";
+    document.querySelector(".screen1").classList.add("dark");
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
+
+    document.querySelector(".loader").classList.add("dark");
+    document.querySelector(".logo2 img").src = "assets/logo-yellow.png";
   } else {
     darkmode = false;
     document.querySelector("body").classList.remove("dark");
@@ -334,6 +376,12 @@ modeSwitch.onclick = function () {
       element.src = "assets/next_light-green.png";
     });
     document.querySelector(".exit img").src = "assets/exit_grey.png";
+    document.querySelector(".screen1").classList.remove("dark");
+    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch.png";
+    document.querySelector(".logo3 img").src = "assets/logo-green.png";
+
+    document.querySelector(".loader").classList.remove("dark");
+    document.querySelector(".logo2 img").src = "assets/logo-green.png";
   }
 };
 //end of dark mode

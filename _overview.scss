@@ -5,7 +5,7 @@
   }
   h2 {
     padding-left: 2vw;
-    margin-bottom: 2vw;
+    margin-bottom: 1vw;
     margin-top: 0;
   }
   border-radius: 10px;
@@ -17,7 +17,7 @@
   .storage {
     background-color: variables.$section-background;
     border-radius: 10px;
-    padding: 2vw;
+    padding: 1vw;
     box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
   }
   ul {
@@ -30,13 +30,13 @@
     display: flex;
     justify-content: space-between;
     font-family: variables.$regular;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     padding: 0.2rem;
     color: variables.$dark-grey;
     border-bottom: solid 1px variables.$dark-grey;
   }
   .storageitems {
-    height: 6vw;
+    height: 5vw;
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: variables.$dark-green variables.$background-light;
@@ -52,7 +52,7 @@
 }
 
 .taps {
-  padding: 2vw;
+  padding: 1vw;
   .toptaps {
     display: flex;
     justify-content: space-between;
@@ -99,8 +99,8 @@
     row-gap: 0.8vw;
   }
   .progress {
-    width: 5vw;
-    height: 9vw;
+    width: 3vw;
+    height: 5vw;
     background: variables.$background-light;
     border-radius: 10px;
     display: flex;

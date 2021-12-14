@@ -1,5 +1,5 @@
 @use "variables";
-.header{
+.header {
   visibility: hidden;
   display: none;
 }
@@ -27,11 +27,11 @@
   border-radius: 9px;
   background-image: url(assets/beer-liquid.jpg);
   background-repeat: no-repeat;
-background-size: cover;
+  background-size: cover;
   position: relative;
   animation: fade-out 3s 1 linear;
 }
-.logo2{
+.logo2 {
   visibility: hidden;
   display: none;
 }
@@ -47,17 +47,13 @@ background-size: cover;
   display: flex;
   justify-content: center;
   z-index: 3;
- 
 }
-
 
 @keyframes fade-out {
   0% {
     opacity: 0%;
   }
-  50%{
-    opacity: 50%;
-  }
+
   100% {
     opacity: 100%;
   }
@@ -95,7 +91,6 @@ background-size: cover;
     margin-top: 0;
   }
   .logo2 img {
-
     margin-top: 0;
     height: 9vh;
     width: auto;
