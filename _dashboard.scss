@@ -37,6 +37,7 @@ header {
   width: 6rem;
   height: fit-content;
   margin-left: 6vw;
+  cursor: pointer;
 }
 
 main {
@@ -161,6 +162,7 @@ main {
     height: 100vh;
     top: 0;
     left: 0;
+    padding: 10vw;
   }
   .bartender {
     grid-column-start: 1;
