@@ -106,7 +106,7 @@ function loadJSON() {
 setInterval(function () {
   removeObjects();
   loadJSON();
-}, 10000);
+}, 1000000000);
 document.querySelector(".done-btn").addEventListener("click", removeTask);
 function removeTask() {
   // console.log(jsonData);
@@ -221,7 +221,7 @@ function showBeerTap(taps) {
       fill.style.width = "100%";
     }
 
-    createBubbles(60, 100);
+    createBubbles(80, 100);
     function createBubbles(bubblesNumber, percent) {
       for (let i = 0; i < bubblesNumber; i++) {
         const random = Math.floor(Math.random() * ((percent * 200) / 100));

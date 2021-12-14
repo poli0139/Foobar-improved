@@ -2,24 +2,11 @@
 .hidden {
   visibility: hidden;
 }
-// .darkpop {
-
-// }
-// .lightpop {
-// background: variables.$background-light;
-//   p {
-//     color: variables.$dark-green;
-//   }
-// }
 .popup-done {
   position: fixed;
-  width: 40vw;
-  height: 20vw;
   z-index: 2;
   border-radius: 10px;
   box-shadow: 5px 5px 17px -9px rgba(0, 0, 0, 0.82);
-  top: 30%;
-  left: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +14,6 @@
 
   p {
     color: variables.$dark-green;
-
     font-size: 2rem;
     font-family: variables.$regular;
   }
