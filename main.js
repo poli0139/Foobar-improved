@@ -221,7 +221,7 @@ function showBeerTap(taps) {
       fill.style.width = "100%";
     }
 
-    createBubbles(80, 100);
+    createBubbles(90, 60);
     function createBubbles(bubblesNumber, percent) {
       for (let i = 0; i < bubblesNumber; i++) {
         const random = Math.floor(Math.random() * ((percent * 200) / 100));

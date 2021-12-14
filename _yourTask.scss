@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   font-family: variables.$regular;
+  color: variables.$dark-grey;
   box-shadow: 2px 2px 6px variables.$background-light;
   overflow: auto;
   scrollbar-width: thin;
@@ -79,6 +80,7 @@
   }
   .noone {
     font-size: 1.5rem;
+    color: variables.$dark-grey;
     font-family: variables.$regular;
   }
 }
