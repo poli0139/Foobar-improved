@@ -15,9 +15,7 @@
   font-family: variables.$regular;
   color: variables.$dark-grey;
   box-shadow: 2px 2px 6px variables.$background-light;
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: variables.$dark-green variables.$section-background;
+
   .orderList {
     width: 70%;
   }
@@ -30,11 +28,17 @@
     height: 5.5rem;
     row-gap: 0.3rem;
   }
-  .order::-webkit-scrollbar {
+  .task {
+    width: 35%;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: variables.$dark-green variables.$section-background;
+  }
+  .task::-webkit-scrollbar {
     width: 7px;
     background: variables.$section-background;
   }
-  .order::-webkit-scrollbar-thumb {
+  .task::-webkit-scrollbar-thumb {
     background: variables.$dark-green;
   }
   .time-button {

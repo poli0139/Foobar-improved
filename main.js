@@ -307,10 +307,13 @@ function showTask(dataBase) {
 }
 
 //LOG OUT
-document.querySelector(".logout").addEventListener("click", reset);
-function reset() {
-  location.reload();
-}
+
+document.querySelectorAll(".logout").forEach((button) => {
+  button.addEventListener("click", reset);
+  function reset() {
+    location.reload();
+  }
+});
 
 //end of display data
 
