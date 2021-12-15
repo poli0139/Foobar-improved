@@ -105,7 +105,7 @@ function loadJSON() {
 setInterval(function () {
   removeObjects();
   loadJSON();
-}, 100000000);
+}, 10000);
 document.querySelector(".done-btn").addEventListener("click", removeTask);
 function removeTask() {
   let task = document.querySelector(".singleOrder");
