@@ -250,9 +250,9 @@ function showQueue(peopleQueue) {
       .toString()
       .padStart(2, "0");
     if (darkmode === true) {
-      copy.querySelector(".next-icon").src = "assets/next_yellow.png";
+      copy.querySelector(".next-icon").src = "/assets/next_yellow.png";
     } else if (darkmode === false) {
-      copy.querySelector(".next-icon").src = "assets/next_light-green.png";
+      copy.querySelector(".next-icon").src = "/assets/next_light-green.png";
     }
     copy.querySelector(".length").textContent = person.order.length;
     copy.querySelector(".orderId span").textContent = person.id;
@@ -365,7 +365,7 @@ modeSwitch.onclick = function () {
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
-      element.src = "assets/next_yellow.png";
+      element.src = "/assets/next_yellow.png";
     });
     document.querySelector(".exit img").src = "assets/exit_white.png";
     document.querySelector(".screen1").classList.add("dark");
