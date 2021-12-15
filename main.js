@@ -245,7 +245,10 @@ function showQueue(peopleQueue) {
   peopleQueue.forEach((person) => {
     const copy = template.cloneNode(true);
     const hour = new Date(person.startTime).getHours();
-    const minutes = new Date(person.startTime).getMinutes().toString().padStart(2, "0");
+    const minutes = new Date(person.startTime)
+      .getMinutes()
+      .toString()
+      .padStart(2, "0");
     if (darkmode === true) {
       copy.querySelector(".next-icon").src = "assets/next_yellow.png";
     } else if (darkmode === false) {
@@ -272,15 +275,25 @@ function showStorage(storage) {
 //TASK
 function showTask(dataBase) {
   const loggedIn = document.getElementById("Username").value;
-  const workingBartender = dataBase.bartenders.filter((x) => x.name === loggedIn);
+  const workingBartender = dataBase.bartenders.filter(
+    (x) => x.name === loggedIn
+  );
   const servings = dataBase.serving;
   const OrderToDo = workingBartender[0].servingCustomer;
   const container = document.querySelector(".task");
   const container2 = document.querySelector(".time-button");
-  const hour3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getHours();
-  const minute3 = new Date(servings.filter((x) => x.id === OrderToDo)[0].startTime).getMinutes().toString().padStart(2, "0");
+  const hour3 = new Date(
+    servings.filter((x) => x.id === OrderToDo)[0].startTime
+  ).getHours();
+  const minute3 = new Date(
+    servings.filter((x) => x.id === OrderToDo)[0].startTime
+  )
+    .getMinutes()
+    .toString()
+    .padStart(2, "0");
 
-  container.querySelector(".subheading2 span").textContent = " " + `#${servings.filter((x) => x.id === OrderToDo)[0].id}`;
+  container.querySelector(".subheading2 span").textContent =
+    " " + `#${servings.filter((x) => x.id === OrderToDo)[0].id}`;
 
   const beers = servings.filter((x) => x.id === OrderToDo)[0].order;
   beers.map(function (item) {
@@ -315,10 +328,12 @@ switchDark.onclick = function () {
     document.querySelector("body").classList.add("dark");
     document.querySelector("body").style.borderLeft = "7vw solid #849478";
     document.querySelector(".screen1").classList.add("dark");
-    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".screen1 .switch").src =
+      "assets/FooBar-switch2.png";
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
-    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src =
+      "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".loader").classList.add("dark");
     document.querySelector(".logo2 img").src = "assets/logo-yellow.png";
@@ -345,7 +360,8 @@ modeSwitch.onclick = function () {
   if (darkmode == false) {
     darkmode = true;
     document.querySelector("body").classList.add("dark");
-    document.querySelector(".bartender-img").src = "assets/bartender-yellow.png";
+    document.querySelector(".bartender-img").src =
+      "assets/bartender-yellow.png";
     document.querySelector(".switch").src = "assets/FooBar-switch2.png";
     document.querySelector(".logo").src = "assets/logo-yellow.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
@@ -353,7 +369,8 @@ modeSwitch.onclick = function () {
     });
     document.querySelector(".exit img").src = "assets/exit_white.png";
     document.querySelector(".screen1").classList.add("dark");
-    document.querySelector(".screen1 .switch").src = "assets/FooBar-switch2.png";
+    document.querySelector(".screen1 .switch").src =
+      "assets/FooBar-switch2.png";
     document.querySelector(".logo3 img").src = "assets/logo-yellow.png";
 
     document.querySelector(".loader").classList.add("dark");
@@ -365,7 +382,7 @@ modeSwitch.onclick = function () {
     document.querySelector(".switch").src = "assets/FooBar-switch.png";
     document.querySelector(".logo").src = "assets/logo-green.png";
     document.querySelectorAll(".next-icon").forEach((element) => {
-      element.src = "assets/next_light-green.png";
+      element.src = "/assets/next_light-green.png";
     });
     document.querySelector(".exit img").src = "assets/exit_grey.png";
     document.querySelector(".screen1").classList.remove("dark");
