@@ -42,12 +42,29 @@
       <div class="form-wrapper">
         <form class="login-form" id="myform" method="POST" name="login">
           <label>Username</label>
-          <span class="comment"> Valid Usernames: Jonas, Klaus, Peter, Dannie </span>
-          <input type="text" class="login-form-input" placeholder="Jonas" id="Username" autocomplete="off" name="username" autofocus />
+          <span class="comment">
+            Valid Usernames: Jonas, Klaus, Peter, Dannie
+          </span>
+          <input
+            type="text"
+            class="login-form-input"
+            placeholder="Jonas"
+            id="Username"
+            autocomplete="off"
+            name="username"
+            autofocus
+          />
           <p class="message">Error Message</p>
           <label>Password</label>
           <span class="comment"> Any password is valid </span>
-          <input type="password" class="login-form-input" placeholder="********" id="Password" autocomplete="off" name="password" />
+          <input
+            type="password"
+            class="login-form-input"
+            placeholder="********"
+            id="Password"
+            autocomplete="off"
+            name="password"
+          />
           <p class="message">Error Message</p>
           <input type="submit" class="form-submit-btn" value="LOG IN" />
         </form>
@@ -67,7 +84,9 @@
           <p>17:00-01:00</p>
         </div>
         <button class="button logout">LOG OUT</button>
-        <button class="exit"><img src="assets/exit_grey.png" alt="exit icon mobile" /></button>
+        <button class="exit">
+          <img src="assets/exit_grey.png" alt="exit icon mobile" />
+        </button>
       </section>
 
       <section class="overview">
@@ -105,7 +124,9 @@
             <ul></ul>
           </div>
           <template class="storageTemplate">
-            <li><span class="namebeer"></span><span class="amountbeer"></span></li>
+            <li>
+              <span class="namebeer"></span><span class="amountbeer"></span>
+            </li>
           </template>
         </div>
       </section>
@@ -114,7 +135,9 @@
         <div class="order">
           <!-- <div class = "amount"></div> -->
           <div class="task">
-            <h2 class="subheading2">Order<span class="orderId"></span><span id="bartenderName"></span></h2>
+            <h2 class="subheading2">
+              Order<span class="orderId"></span><span id="bartenderName"></span>
+            </h2>
             <ul class="singleOrder">
               <!-- <li class="name3"></li> -->
             </ul>
@@ -133,7 +156,11 @@
           <template class="nextInQueueTemplate">
             <div class="singlePerson">
               <p class="length"></p>
-              <img class="next-icon" src="" alt="next-in-queue" />
+              <img
+                class="next-icon"
+                src="/assets/next_light-green.png"
+                alt="next-in-queue"
+              />
               <p class="orderId">#<span></span></p>
               <p class="orderTime"></p>
             </div>
