@@ -31,14 +31,11 @@
   position: relative;
   animation: fade-out 3s 1 linear;
 }
-.logo2 {
+.logoLoader {
   visibility: hidden;
   display: none;
 }
-// .logo2 img {
-//   visibility: hidden;
-//   display: none;
-// }
+
 .hi,
 .shift {
   font-family: variables.$regular;
@@ -84,13 +81,13 @@
     animation: fade-out 3s 1 linear;
   }
 
-  .logo2 {
+  .logoLoader {
     visibility: visible;
     display: flex;
     justify-content: center;
     margin-top: 0;
   }
-  .logo2 img {
+  .logoLoader img {
     margin-top: 0;
     height: 9vh;
     width: auto;

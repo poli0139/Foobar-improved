@@ -5,6 +5,7 @@ import { screen1DarkMode } from "./darkMode";
 import { mainScreenDarkMode } from "./darkMode";
 import { showStorage } from "./storage";
 import { showTask } from "./showTask";
+import { getMainTime } from "./getMainTime";
 import { removeObjects } from "./removeObjects";
 import { removeTask } from "./removeTask";
 import { initFucntion } from "./initFunction";
@@ -35,16 +36,12 @@ function form() {
   };
 
   const checkName = (input) => {
-    if (input.value === "Jonas") {
-      succes(input);
-      init();
-    } else if (input.value === "Peter") {
-      succes(input);
-      init();
-    } else if (input.value === "Klaus") {
-      succes(input);
-      init();
-    } else if (input.value === "Dannie") {
+    if (
+      input.value === "Jonas" ||
+      input.value === "Peter" ||
+      input.value === "Klaus" ||
+      input.value === "Dannie"
+    ) {
       succes(input);
       init();
     } else {
@@ -64,7 +61,6 @@ function init() {
   loadJSON();
 }
 
-// fetching data
 function loadJSON() {
   fetch("https://foobarpm.herokuapp.com/")
     .then((response) => response.json())
@@ -73,8 +69,6 @@ function loadJSON() {
       // removeTask(jsonData);
     });
 }
-
-// reLoadingJSON
 
 setInterval(function () {
   removeObjects();
@@ -89,12 +83,6 @@ function prepareObjects(jsonData) {
   showStorage(jsonData.storage);
   showTask(jsonData);
   getMainTime(jsonData.timestamp);
-}
-
-function getMainTime(time) {
-  const hour2 = new Date(time).getHours();
-  const minutes2 = new Date(time).getMinutes().toString().padStart(2, "0");
-  document.querySelector("header h1").textContent = hour2 + ":" + minutes2;
 }
 
 //LOG OUT
